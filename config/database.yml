@@ -12,8 +12,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:  
-  port: 3305 #3305
-  socket: /opt/lampp/var/mysql/mysql.sock (for linux)
+  port: 3306 #3305
+  # socket: /opt/lampp/var/mysql/mysql.sock (for linux)
 
 development:
   <<: *default
