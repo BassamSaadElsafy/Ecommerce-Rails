@@ -4,6 +4,9 @@ class Product < ApplicationRecord
     belongs_to :store
     has_one_attached :image, dependent: :destroy
     has_and_belongs_to_many :orders
+
+    has_many :order_products
+    has_many :orders, through: :order_products
     
     def self.search(search)
         if search

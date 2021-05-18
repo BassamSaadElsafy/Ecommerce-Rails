@@ -9,10 +9,12 @@
   </p>
   <p>
     price <span><%= @product.price %></span>
+    Total price <span><%= @order.quantity*@product.price %></span>
   </p>
   <p>
     <%= form.label :quantity %><br>
     <%= form.number_field :quantity %>
+    <%= form.number_field :quantity, max: @product.quantity, min: "0" %>
   </p>
   <p>
     category <span><%= Category.find(@product.category_id).name %></span>

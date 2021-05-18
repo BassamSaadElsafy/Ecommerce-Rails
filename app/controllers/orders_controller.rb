@@ -30,12 +30,18 @@ class OrdersController < ApplicationController
 
     def edit
         @order = Order.find(params[:id])
-        @product = Product.find(@order.id)
+        @orderprod = OrderProduct.find_by(order_id: @order.id)
+        @product = Product.find(@orderprod.product_id)
     end
 
     def update
       @order = Order.find(params[:id])
+
+      @orderprod = OrderProduct.find_by(order_id: @order.id)
+      @product = Product.find(@orderprod.product_id)
+
       @order.update(order_params)
+      @product.update(quantity: @product.quantity-@order.quantity)
   
       if @order.update(state: "Inorder")
           redirect_to @order

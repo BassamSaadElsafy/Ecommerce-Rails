@@ -3,6 +3,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
         create_table :orders do |t|
             t.string :state
             t.references :user
+            t.integer :quantity
             t.timestamps
         end
     end

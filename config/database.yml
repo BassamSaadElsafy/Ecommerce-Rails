@@ -13,7 +13,7 @@ default: &default
   username: root
   password:  
   port: 3306
-  #socket: /opt/lampp/var/mysql/mysql.sock #(for linux)
+  socket: /opt/lampp/var/mysql/mysql.sock #(for linux)
 
 development:
   <<: *default
