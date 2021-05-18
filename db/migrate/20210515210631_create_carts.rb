@@ -4,7 +4,6 @@ class CreateCarts < ActiveRecord::Migration[5.2]
             t.integer :quantity
             t.references :product
             t.references :user
-    
             t.timestamps
         end
     end

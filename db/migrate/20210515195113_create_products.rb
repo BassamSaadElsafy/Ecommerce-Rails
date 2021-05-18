@@ -8,7 +8,6 @@ class CreateProducts < ActiveRecord::Migration[5.2]
             t.references :category
             t.references :brand
             t.references :store
-
             t.timestamps
         end
     end

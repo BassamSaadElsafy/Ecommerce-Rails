@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Category.create(name: "Laptops")
+Brand.create(name: "Dell")
+User.create(
+    name: "Nouran",
+    email: "nouran@yahoo.com",
+    avatar: "avatar.png",
+    password: "123456",
+    role: "seller"
+)
+Store.create(
+    name: "Carrefour",
+    summary: "Hyper Market",
+    user_id: 1
+)
+
+Product.create(
+    title: "Dell Inspiron",
+    description: "New Laptop",
+    price: 6500,
+    quantity: 20,
+    category_id: 1,
+    brand_id: 1,
+    store_id: 1
+)

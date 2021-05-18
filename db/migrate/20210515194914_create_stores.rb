@@ -4,7 +4,6 @@ class CreateStores < ActiveRecord::Migration[5.2]
             t.string :name
             t.text :summary
             t.references :user
-    
             t.timestamps
         end
     end

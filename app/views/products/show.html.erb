@@ -1,0 +1,12 @@
+<div>
+    <h2><%= @product.title %></h2>
+    <%= image_tag(@product.image, size: "250x250") if @product.image.attached? %>
+    <p><%= @product.description %></p>
+    <p>Price: <%= @product.price %></p>
+    <p>Quantity: <%= @product.quantity %></p>
+    <p>Category: <%= @product.category.name %></p>
+    <p>Brand: <%= @product.brand.name %></p>
+    <p>Store: <%= @product.store.name %></p>
+</div>
+
+<%= link_to "Home", products_path %> 
