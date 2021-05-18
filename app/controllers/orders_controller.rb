@@ -30,19 +30,19 @@ class OrdersController < ApplicationController
 
     def edit
         @order = Order.find(params[:id])
+        @product = Product.find(@order.id)
     end
 
     def update
-        respond_to do |format|
-          if @order.update(order_params)
-            format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-            format.json { render :show, status: :ok, location: @order }
-          else
-            format.html { render :edit }
-            format.json { render json: @order.errors, status: :unprocessable_entity }
-          end
-        end
+      @order = Order.find(params[:id])
+      @order.update(order_params)
+  
+      if @order.update(state: "Inorder")
+          redirect_to @order
+      else
+          render 'edit'
       end
+    end
 
       def destroy
         @order.destroy

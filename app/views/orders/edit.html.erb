@@ -1,5 +1,29 @@
 <h1>Editing Order</h1>
 
-<%= render 'form', order: @order %>
+<%= form_with(model: @order, local: true) do |form| %>
+  <p>
+    title <span><%= @product.title %></span>
+  </p>
+  <p>
+    description <span><%= @product.description %></span>
+  </p>
+  <p>
+    price <span><%= @product.price %></span>
+  </p>
+  <p>
+    <%= form.label :quantity %><br>
+    <%= form.number_field :quantity %>
+  </p>
+  <p>
+    category <span><%= Category.find(@product.category_id).name %></span>
+  </p>
+  <p>
+    brand <span><%= Brand.find(@product.brand_id).name %></span>
+  </p> 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
 <%= link_to 'Show', @order %> |
 <%= link_to 'Back', orders_path %>
