@@ -11,9 +11,9 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:  
-  port: 3305 #3305
-  socket: /opt/lampp/var/mysql/mysql.sock #(for linux)
+  password:  '0000'
+  # port: 3305 #3305
+  # socket: /opt/lampp/var/mysql/mysql.sock #(for linux)
 
 development:
   <<: *default
