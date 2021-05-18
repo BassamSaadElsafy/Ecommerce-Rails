@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  
+  resources :orders
+  get 'welcome/index'
+  resources :orders
+  root 'welcome#index'
   ############################# User Routes #####################################
   devise_for :users
     devise_scope :user do
@@ -17,6 +20,6 @@ Rails.application.routes.draw do
     resources :products
   end
   ###############################################################################
-  root to: "products#index"
+  # root to: "products#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
