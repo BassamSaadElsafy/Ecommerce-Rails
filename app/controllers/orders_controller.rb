@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
       @product = Product.find(@orderprod.product_id)
 
       @order.update(order_params)
-      @product.update(quantity: @product.quantity-@order.quantity)
+      @product.update(quantity: @product.quantity-@order.quantity)  
   
       if @order.update(state: "Inorder")
           redirect_to @order
@@ -66,7 +66,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order, {})
       params.fetch(:order, {}).permit(:search)
     end
 end

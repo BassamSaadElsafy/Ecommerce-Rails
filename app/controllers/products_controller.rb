@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
 
     #Get all Products or #Filtared Product
     def index
-        @products = Product.all
         @products = Product.search(params[:search])
     end
 
@@ -17,8 +16,11 @@ class ProductsController < ApplicationController
     def create
         @product = Product.new(product_params)
         @product.store_id = 1
-        @product.save
-        redirect_to @product
+        if @product.save
+            redirect_to @product
+        else
+            render 'new'
+        end
     end
 
     #Show Product Details
