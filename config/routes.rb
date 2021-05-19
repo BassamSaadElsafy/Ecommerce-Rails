@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   resources :orders
   get 'welcome/index'
   resources :orders
@@ -13,6 +16,7 @@ Rails.application.routes.draw do
   ############################# Product Routes ##################################
   get "/fetch_products" => 'products#filter_products', as: 'fetch_products'
   resources :products
+
   ###############################################################################
 
   ############################# Product API Routes ##############################

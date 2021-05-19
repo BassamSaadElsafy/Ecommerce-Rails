@@ -1,10 +1,8 @@
 class OrdersController < ApplicationController
     before_action :set_order, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_user!, :except => [:show, :index]
 
     def index
         @orders = Order.all()
-       
     end
 
     def new
@@ -41,7 +39,7 @@ class OrdersController < ApplicationController
       @product = Product.find(@orderprod.product_id)
 
       @order.update(order_params)
-      @product.update(quantity: @product.quantity-@order.quantity)
+      @product.update(quantity: @product.quantity-@order.quantity)  
   
       if @order.update(state: "Inorder")
           redirect_to @order
@@ -66,7 +64,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order, {})
-      params.fetch(:order, {}).permit(:search)
+      params.fetch(:order, {}).permit(:quantity, :search)
     end
 end
