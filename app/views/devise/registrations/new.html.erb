@@ -1,82 +1,14 @@
-<style>
-/* User sign in and sign forms. */
-.border-form-div {
-    max-width: 300px;
-    padding: 19px 29px 29px;
-    margin: 0 auto 20px;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
-    -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-            border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-            box-shadow: 0 1px 2px rgba(0,0,0,.05);
-}
-.border-form-div .form-signin-heading,
-.border-form-div .checkbox {
-    margin-bottom: 10px;
-}
-.border-form-div input[type="text"],
-.border-form-div input[type="email"],
-.border-form-div input[type="password"] {
-    width:100%;
-    font-size: 16px;
-    height: auto;
-    margin-bottom: 15px;
-    padding: 7px 9px;
-}
-
-/*flash*/
-.alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
-
-.alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
-
-.alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
-
-.alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
-</style>
 <%= devise_error_messages! %>
-<div class="border-form-div text-left">
-  <h2 class="bg-dark text-white shadow rounded mb-4 p-1 text-center">Sign up</h2>
+<div class="border-form-div">
+  <h2>Sign up</h2>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-     <%= f.label :name %><br />
     <%= f.text_field :name, :autofocus => true, :placeholder => 'Full Name' %>
-       <%= f.label :email %><br />
-
     <%= f.email_field :email, :placeholder => 'Email address' %>
-       <%= f.label :password %><br />
-
     <%= f.password_field :password, :placeholder => 'Password' %>
-       <%= f.label :password_confirmation %><br />
-
     <%= f.password_field :password_confirmation, :placeholder => 'Password confirmation' %>
-       <%= f.label :avatar %><br />
-
-    <%= f.file_field :avatar, :placeholder => 'Avatar'%>
-    <hr>
-    <%= f.submit "Sign up",:class=>'btn btn-primary mb-2' %>
+    <%= f.file_field :avatar, :placeholder => 'Avatar',:class=>'mb-3' %>
+    <%= f.submit "Sign up",:class=>'btn btn-primary mb-3' %>
   <% end %>
-  <p>already registered?
+  <p>already registered
   <%= render "devise/shared/links" %></p>
 </div>

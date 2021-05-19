@@ -21,4 +21,24 @@ class Product < ApplicationRecord
             @products = self.all
         end
     end
+
+    def self.filter(filter, filterby)
+        if filterby === "category"
+            category = Category.find_by(name: filter)
+            if category
+                products = self.where(category_id: category.id)
+            end
+        elsif filterby === "brand"
+            brand = Brand.find_by(name: filter)
+            if brand
+                products = self.where(brand_id: brand.id)
+            end
+        elsif filterby === "store"
+            store = Store.find_by(name: filter)
+            if store
+                products = self.where(store_id: store.id)
+            end
+        end
+    end
+
 end

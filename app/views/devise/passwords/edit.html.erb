@@ -1,5 +1,8 @@
 <%= devise_error_messages! %>
 <div class="border-form-div">
+
+  <%= devise_error_messages! %>
+  <div class="border-form-div">
   <h2>Change your password</h2>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
@@ -9,12 +12,12 @@
       <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em><br />
       <% end %>
-       <%= f.password_field :password, :placeholder => 'New Password' %>
+      <%= f.password_field :password, :placeholder => 'New Password' %>
     </div>
 
     <div class="field">
         <%= f.password_field :password_confirmation, :placeholder => 'Confirm New Password' %>
-     </div>
+    </div>
 
     <div class="actions">
       <%= f.submit "Change my password",:class=>'btn btn-primary mb-3' %>
