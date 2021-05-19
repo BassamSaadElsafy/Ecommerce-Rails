@@ -6,13 +6,20 @@
                 <li class='nav-item shadow rounded'><%= link_to 'Products', products_path, class: 'nav-link' %></li>  
                 <li class='nav-item shadow rounded'><%= link_to 'Orders', orders_path, class: 'nav-link' %></li>  
             </ul>
+
             <ul class="nav navbar-nav ml-auto">
-                <li class='nav-item shadow rounded'><%= link_to "Sign In" , new_user_session_path, class: 'nav-link' %></li>
-                <li class='nav-item shadow rounded'><%= link_to "Sign Up" , new_user_registration_path, class: 'nav-link' %></li>  
+
+            <% if current_user %>
+                
                 <li class='nav-item shadow rounded'><%= link_to "Log Out" , destroy_user_session_path, method: :delete, class: 'nav-link' %></li>  
+            <%else%>
+                <li class='nav-item shadow rounded'><%= link_to "Sign In" , new_user_session_path, class: 'nav-link' %> </li>
+                <li class='nav-item shadow rounded'><%= link_to "Sign Up" , new_user_registration_path, class: 'nav-link'  %> </li>  
+            <% end %>
+
             </ul>
         </div>
     </div>
 </nav>
-                <p class="notice text-warning text-center"><%= notice %></p>
-                <p class="alert text-danger text-center"><%= alert %></p> 
+<p class="notice text-warning text-center"><%= notice %></p>
+<p class="alert text-danger text-center"><%= alert %></p> 

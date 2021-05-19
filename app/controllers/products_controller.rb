@@ -1,5 +1,8 @@
 class ProductsController < ApplicationController
     
+    ##authentication required for this operations
+    before_action :authenticate_user!, :except => [:show, :index]
+
     #Get all Products or #Filtared Product
     def index
         @products = Product.all
