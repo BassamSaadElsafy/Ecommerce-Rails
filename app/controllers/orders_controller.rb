@@ -10,7 +10,13 @@ class OrdersController < ApplicationController
     end
 
     def create
-        @order = Order.new(order_params)
+
+        @order = Order.new()
+        @order.state = "pending"
+        @order.user_id = 1 #current_user_id
+        @product = Product.find(params[:id])
+        @order.products << @product
+
         respond_to do |format|
           if @order.save
             format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -20,7 +26,17 @@ class OrdersController < ApplicationController
             format.json { render json: @order.errors, status: :unprocessable_entity }
           end
         end
-      end
+    end
+
+    def showCart 
+        @items = Array.new
+        @total_payment = 0
+        @products = Order.where(state: "pending").collect(&:products).flatten
+        @products.each do |product|
+            @items.push(product)
+            @total_payment += (product.price * product.quantity)
+        end 
+    end
 
     def show
         @order = Order.find(params[:id])
@@ -64,6 +80,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order, {}).permit(:quantity, :search)
+      params.fetch(:order, {}).permit(:id)
     end
 end

@@ -13,11 +13,17 @@
   </head>
 
   <body>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <header>
       <%= render 'layouts/navigation' %>
     </header>
+
     <%= render 'layouts/messages' %>
-    <div class="container mt-4">
+
+    <div class="container-fluid">
       <%= yield %>
     </div>
      <footer>

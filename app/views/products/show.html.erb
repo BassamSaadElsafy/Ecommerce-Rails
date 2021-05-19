@@ -1,6 +1,6 @@
 <div class="m-5 p-1 border">
     <h2><%= @product.title %></h2>
-    <%= image_tag(@product.image, size: "250x250") if @product.image.attached? %>
+    <%= (@product.image.attached?) ? image_tag(@product.image, size: "250x250") : "" %>
     <p><%= @product.description %></p>
     <p>Price: <%= @product.price %></p>
     <p>Quantity: <%= @product.quantity %></p>
@@ -9,4 +9,5 @@
     <p>Store: <%= @product.store.name %></p>
 </div>
 
-<%= link_to "Home", products_path %> 
+<%= link_to "Home", products_path %>
+<%= link_to "Add To Cart", add_to_cart_path(@product.id)%>

@@ -5,7 +5,11 @@ class ProductsController < ApplicationController
 
     #Get all Products or #Filtared Product
     def index
-        @products = Product.search(params[:search])
+        if(params[:filter])
+            @products = Product.filter(params[:filter], params[:filterby])
+        else
+            @products = Product.search(params[:search])
+        end
     end
 
     #Get New Product Page
@@ -52,6 +56,6 @@ class ProductsController < ApplicationController
     
     private
         def product_params
-            params.require(:product).permit(:title, :description, :price, :quantity, :category_id, :brand_id, :image, :search)
+            params.require(:product).permit(:title, :description, :price, :quantity, :category_id, :brand_id, :image)
         end
 end

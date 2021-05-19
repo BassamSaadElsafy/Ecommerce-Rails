@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
   resources :orders
   root 'welcome#index'
+
+  get 'addtocart/:id', to: 'orders#create', as: 'add_to_cart'
+  get 'showcart/', to: 'orders#showCart', as: 'show_cart'
   ############################# User Routes #####################################
   devise_for :users
     devise_scope :user do

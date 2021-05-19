@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style>
 /* User sign in and sign forms. */
 .border-form-div {
@@ -69,24 +70,27 @@ input[type=file]::before{
 <%= devise_error_messages! %>
 <div class="border-form-div text-left">
   <h2 class="bg-danger text-white shadow rounded mb-4 p-1 text-center">Sign up</h2>
+=======
+<%= devise_error_messages! %>
+<div class="border-form-div">
+  <h2>Sign up</h2>
+>>>>>>> 92f26e14844bb463dd5181cdb7c60fc7c81c9aef
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-     <%= f.label :name %><br />
     <%= f.text_field :name, :autofocus => true, :placeholder => 'Full Name' %>
-       <%= f.label :email %><br />
-
     <%= f.email_field :email, :placeholder => 'Email address' %>
-       <%= f.label :password %><br />
-
     <%= f.password_field :password, :placeholder => 'Password' %>
-       <%= f.label :password_confirmation %><br />
-
     <%= f.password_field :password_confirmation, :placeholder => 'Password confirmation' %>
+<<<<<<< HEAD
        <%= f.label :avatar %><br />
 
     <%= f.file_field :avatar, :placeholder => 'Avatar'%>
     <hr>
     <%= f.submit "Sign up",:class=>'btn btn-danger mb-2' %>
+=======
+    <%= f.file_field :avatar, :placeholder => 'Avatar',:class=>'mb-3' %>
+    <%= f.submit "Sign up",:class=>'btn btn-primary mb-3' %>
+>>>>>>> 92f26e14844bb463dd5181cdb7c60fc7c81c9aef
   <% end %>
-  <p>already registered?
+  <p>already registered
   <%= render "devise/shared/links" %></p>
 </div>
