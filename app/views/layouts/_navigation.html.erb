@@ -9,14 +9,15 @@
 
             <ul class="nav navbar-nav ml-auto">
 
-            <% if current_user %>
-                
-                <li class='nav-item shadow rounded'><%= link_to "Log Out" , destroy_user_session_path, method: :delete, class: 'nav-link' %></li>  
-            <%else%>
-                <li class='nav-item shadow rounded'><%= link_to "Sign In" , new_user_session_path, class: 'nav-link' %> </li>
-                <li class='nav-item shadow rounded'><%= link_to "Sign Up" , new_user_registration_path, class: 'nav-link'  %> </li>  
-            <% end %>
-
+                <% if current_user %>
+                    <li class='nav-item shadow rounded'><%= link_to "Log Out" , destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+                    <% if current_user.superadmin_role? %>
+                            <li class='nav-item shadow rounded'><%= link_to 'Manage App', "/admin", class: 'nav-link' %></li> 
+                    <% end %>
+                    <%else%>
+                    <li class='nav-item shadow rounded'><%= link_to "Sign Up" , new_user_registration_path, class: 'nav-link' %></li>
+                    <li class='nav-item shadow rounded'><%= link_to "Sign In" , new_user_session_path, class: 'nav-link' %></li>
+                <% end %>
             </ul>
         </div>
     </div>
