@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
 
     def index
         @orders = Order.all()
-       
     end
 
     def new
@@ -66,6 +65,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order, {}).permit(:search)
+      params.fetch(:order, {}).permit(:quantity, :search)
     end
 end
