@@ -9,4 +9,5 @@
     <p>Store: <%= @product.store.name %></p>
 </div>
 
-<%= link_to "Home", products_path %> 
+<%= link_to "Home", products_path %>
+<%= link_to "Add To Cart", add_to_cart_path(@product.id)%>
