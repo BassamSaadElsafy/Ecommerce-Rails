@@ -4,7 +4,7 @@ class AddSuperadmin < ActiveRecord::Migration[5.2]
             u.email     = 'admin@admin.com'
             u.password  = '123456'
             u.superadmin_role = true
-            u.name = 'admin'
+            u.name = 'Admin'
         end
     end
 end

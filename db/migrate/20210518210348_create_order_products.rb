@@ -3,6 +3,9 @@ class CreateOrderProducts < ActiveRecord::Migration[5.2]
         create_table :order_products do |t|
             t.references :order
             t.references :product
+            t.string :store_id
+            t.integer :quantity
+            t.string :state, :default => "inCart"
             t.timestamps
         end
     end

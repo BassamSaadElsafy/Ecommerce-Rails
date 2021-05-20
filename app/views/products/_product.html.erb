@@ -1,0 +1,28 @@
+<article class="product">
+  <header>
+    <%= link_to product do %>
+        <%= (product.image.attached?) ? image_tag(product.image, size: "200x150", class: 'card-img-top mt-2 border') : 'No image' %>
+    <% end %>
+    <h4><%= product.title %></h4>
+  </header>
+
+  <footer class="actions">
+    <% if product.quantity > 0 %>
+        <%= form_with(url: add_to_cart_path(product.id), method: "post") do |form| %>
+          <div class="mb-4">
+              <%= form.submit "Add to Cart", :class => 'btn btn-sm btn-warning text-dark shadow', data: { confirm: 'Do you want to add ( ' + product.title + ' ) to your cart?'} %>
+          </div>
+        <% end %>    
+    <% end %>
+    <%= link_to product, class: 'btn btn-default pull-right' do %>
+    Details &raquo;
+    <% end %>
+  </footer>
+
+  <aside class="price">
+    $<%=  product.price %>
+  </aside>
+  <% if product.quantity == 0 %>
+    <%= out_of_stock %> 
+  <% end %>
+</article>

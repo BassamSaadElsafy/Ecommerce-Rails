@@ -1,5 +1,10 @@
 RailsAdmin.config do |config|
-
+    
+    # RailsAdmin.config do |config|
+    #     config.model 'Product' do 
+    #       visible false
+    #     end
+    # end
     ### Popular gems integration
     # config.authorize_with do
     #   unless current_user.admin?
@@ -37,13 +42,10 @@ RailsAdmin.config do |config|
         dashboard                     # mandatory
         index                         # mandatory
         new
-        export
         bulk_delete
         show
         edit
         delete
-        show_in_app
-
         ## With an audit adapter, you can add:
         # history_index
         # history_show

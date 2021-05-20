@@ -1,4 +1,4 @@
-<div class="m-5 p-1 border">
+<div class="m-2 p-3 border">
   <%= form_with scope: :product, url: products_path, local: true do |form| %>
     <p>
       <%= form.label :title %><br>
@@ -28,6 +28,11 @@
     <p>
       <%= form.label :brand %><br>
       <%= form.collection_select(:brand_id, Brand.all, :id, :name) %>
+    </p>
+
+    <p>
+      <%= form.label :store %><br>
+      <%= form.collection_select(:store_id, Store.all, :id, :name) %>
     </p>
     
     <p>

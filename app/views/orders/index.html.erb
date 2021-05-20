@@ -1,2 +1,53 @@
-<%= link_to 'New Order', new_order_path %> |
-<%= link_to "Show Cart", show_cart_path%>
+<div class="row justify-content-center">
+<div class="col-9 border p-1 m-5">
+<h1 class="text-center mt-3 m-2 bg-success rounded shadow">My Orders</h1>
+<hr />
+<div class="m-3">
+<% if ! @orders.empty? %>
+  <% @orders.each do |order| %>
+    <table class="table table-sm table-striped shadow rounded text-center">
+      <thead class="thead-dark">
+        <tr><th colspan="4" class="text-warning h4">Order #<%= order.id %></th></tr>
+        <tr>
+            <th>Product</th>
+            <th>Image</th>
+            <th>Total Price</th>
+            <th>quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% order.order_products.each do |ordprod| %>
+        <tr class="">
+            <td>
+                <%= ordprod.product.title %>
+            </td>
+            <td>
+                <%= (ordprod.product.image.attached?) ? image_tag(ordprod.product.image, size: "120x100") : "No Image" %>
+            </td>
+            <td>
+              <%= ordprod.quantity*ordprod.product.price %>
+            </td>
+            <td>
+              <%= ordprod.quantity %>
+            </td>
+        </tr>
+        <% end %>
+      <tr class="table-info">
+        <td class="bg-secondary text-center text-white h5">State</td>
+        <td colspan="3" class="text-center h5"><%= order.state %></td>
+      </tr> 
+      </tbody>
+    </table>
+    <% end %>
+    <% else %>
+      <table class="table table-sm table-striped shadow rounded text-center">
+        <thead class="thead-dark">
+          <tr>
+            <td colspan="4" class="text-center h5">No Orders</td>
+          </tr>
+        </thead>
+      </table>
+    <% end %>
+</div>
+</div>
+</div>

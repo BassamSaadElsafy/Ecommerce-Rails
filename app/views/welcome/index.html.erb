@@ -1,24 +1,28 @@
 <div class="jumbotron">
+<div class="m-4 p-4 bg-info border rounded text-center">
   <% if user_signed_in? %>
     <% if current_user.superadmin_role? %>
-        <h1>Welcome,Admin!</h1>
+        <h1 class="bg-dark text-white text-center rounded mb-3">Welcome,Admin!</h1>
       <% else %>
-        <h1>Welcome back, User!</h1>
+        <h1 class="bg-dark text-white text-center rounded mb-3">Welcome back, trusted user!</h1>
     <% end %>
-
-    <p class="lead">
-      Enjoy The App!
-    </p>
-    <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'btn btn-large btn-danger' %>
-  <% else %>
-    <h1>Welcome, new user!</h1>
+    <br>
+    <p class="lead"> Enjoy The App!</p>
+    <br>
+    <div class="row-fluid text-center mb-3">
+      <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'btn btn-large btn-danger' %>
+    </div>
+    <% else %>
+    <h1 class="bg-dark text-white text-center rounded">Welcome, new user!</h1>
+    <br>
     <p class="lead">
       You must sign in or sign up before you can access our super sweet,
       top secret content.
     </p>
-    <div class="row-fluid">
-      <%= link_to "Sign In", new_user_session_path, :class => "btn btn-success" %>
-      <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-success" %>
+    <br>
+    <div class="row-fluid text-center mb-3">
+        <%= link_to "Sign In", new_user_session_path, :class => "btn btn-large btn-primary shadow" %>  <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-large btn-warning shadow" %>
     </div>
   <% end %>
 </div> 
+</div>

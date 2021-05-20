@@ -1,13 +1,40 @@
-<div class="m-5 p-1 border">
+<div class="row justify-content-center">
+<div class="col-6 border p-1 m-2">
+<h1 class="text-center mt-3 m-2 bg-primary rounded shadow">Product</h1>
+<div class="m-4 p-1 border text-center">
     <h2><%= @product.title %></h2>
-    <%= (@product.image.attached?) ? image_tag(@product.image, size: "250x250") : "" %>
-    <p><%= @product.description %></p>
-    <p>Price: <%= @product.price %></p>
-    <p>Quantity: <%= @product.quantity %></p>
-    <p>Category: <%= @product.category.name %></p>
-    <p>Brand: <%= @product.brand.name %></p>
-    <p>Store: <%= @product.store.name %></p>
+    <%= (@product.image.attached?) ? image_tag(@product.image, size: "220x220") : "" %>
+    <hr>
+    <p>Price: <%= @product.price %> | AvailableQuantity: <%= @product.quantity %></p>
+    <p>Category: <%= @product.category.name %> | Brand: <%= @product.brand.name %> | Store: <%= @product.store.name %></p>
+    <hr>
+    <h5>Product Description</h5>
+    <p class="border rounded m-1 p-1 mb-3"><%= @product.description %></p>
+    <hr>
+    <div class="border rounded p-3 m-2 text-center">
+        <% if @product.quantity > 0 %>
+            <%= form_with(url: add_to_cart_path(@product.id), method: "post") do |form| %>
+                <div class="mb-4">
+                    <%= form.number_field :quantity ,value: 1, min: 1, max: @product.quantity %>
+                    <%= form.submit "Add to Cart", :class => 'btn btn-sm btn-warning text-dark shadow', data: { confirm: 'Do you want to add ( ' + @product.title + ' ) to your cart?'} %>
+                </div>
+            <% end %>
+        <% else %>
+                <h5 class="bg-secondary m-4">No Product available now</h5>
+        <% end %>
+        <% if can? :edit, @product %>
+            <%= link_to "Edit", edit_product_path(@product.id), class: 'btn btn-primary shadow' %>
+        <% end %>
+        <% if can? :destroy, @product %>
+            <%= link_to 'Delete', product_path(@product),
+            method: :delete,
+            data: { confirm: 'Are you sure you want to delete this product?' },
+            class: 'btn btn-danger shadow' %>
+        <% end%>
+    </div>
 </div>
-
-<%= link_to "Home", products_path %>
-<%= link_to "Add To Cart", add_to_cart_path(@product.id)%>
+<div class="text-center mt-2 mb-1">
+    <%= link_to "Products", products_path, class: 'btn btn-outline-primary' %>
+</div>
+</div>
+</div>

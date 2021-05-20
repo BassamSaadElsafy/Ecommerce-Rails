@@ -1,85 +1,47 @@
 class OrdersController < ApplicationController
-    before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
-    def index
-        @orders = Order.all()
+  def index
+    @orders = Order.where(user_id: current_user.id).where.not(state: "inCart").order(created_at: :desc)
+  end
+    
+  def edit
+    @order = Order.find_by(id: params[:id], state: "inCart")
+  end
+    
+  ## Put in Order
+  def update
+    @order = Order.find(params[:id])
+    @orderprod = OrderProduct.where(order_id: @order.id)
+    @orderprod.each do |ordprod|
+      (ordprod.product).update(quantity: ordprod.product.quantity-ordprod.quantity)
     end
-
-    def new
-        @order = Order.new
+    if @order.update(state: "pending")
+      redirect_to orders_path, notice: 'put in Order'
+    else
+      redirect_to request.referrer, alert: 'Form inputs not valid please check them'
     end
+  end
 
-    def create
-
-        @order = Order.new()
-        @order.state = "pending"
-        @order.user_id = 1 #current_user_id
-        @product = Product.find(params[:id])
-        @order.products << @product
-
-        respond_to do |format|
-          if @order.save
-            format.html { redirect_to @order, notice: 'Order was successfully created.' }
-            format.json { render :show, status: :created, location: @order }
-          else
-            format.html { render :new }
-            format.json { render json: @order.errors, status: :unprocessable_entity }
-          end
-        end
-    end
-
-    def showCart 
-        @items = Array.new
-        @total_payment = 0
-        @products = Order.where(state: "pending").collect(&:products).flatten
-        @products.each do |product|
-            @items.push(product)
-            @total_payment += (product.price * product.quantity)
-        end 
-    end
-
-    def show
-        @order = Order.find(params[:id])
-    end
-
-    def edit
-        @order = Order.find(params[:id])
-        @orderprod = OrderProduct.find_by(order_id: @order.id)
-        @product = Product.find(@orderprod.product_id)
-    end
-
-    def update
-      @order = Order.find(params[:id])
-
+  def destroy
+    if @order.state == "inCart"
       @orderprod = OrderProduct.find_by(order_id: @order.id)
-      @product = Product.find(@orderprod.product_id)
-
-      @order.update(order_params)
-      @product.update(quantity: @product.quantity-@order.quantity)  
-  
-      if @order.update(state: "Inorder")
-          redirect_to @order
-      else
-          render 'edit'
-      end
+      @orderprod.destroy
+      @order.destroy
+      redirect_to mycart_path, notice: 'Removed successfully'
+    else
+      redirect_to orders_url, notice: 'Order didnt destroy.'
     end
+  end
 
-      def destroy
-        @order.destroy
-        respond_to do |format|
-          format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
-          format.json { head :no_content }
-        end
-      end
-
-      private
+  private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
     end
-
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order, {}).permit(:id)
+      params.fetch(:order, {}).permit(:id,:quantity)
     end
 end

@@ -1,73 +1,6 @@
-<style>
-/* User sign in and sign forms. */
-.border-form-div {
-    max-width: 600px;
-    padding: 19px 29px 29px;
-    margin: 0 auto 20px;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-    box-shadow: 0 1px 2px rgba(0,0,0,.05);
-}
-.border-form-div .form-signin-heading,
-.border-form-div .checkbox {
-    margin-bottom: 10px;
-}
-.border-form-div input[type="text"],
-.border-form-div input[type="email"],
-.border-form-div input[type="password"] {
-    width:100%;
-    font-size: 16px;
-    height: auto;
-    margin-bottom: 15px;
-    padding: 7px 9px;
-    border-radius: 50px;
-    border-style: none;
-    outline-width: 0;
-    background-color:#EAF2F8;
-}
-
-/*flash*/
-.alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
-
-.alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
-
-.alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
-
-.alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
-</style>
-<div class="border-form-div text-left">
-<<<<<<< HEAD
-  <h2 class="bg-danger text-white shadow rounded mb-4 p-1 text-center">Sign in</h2>
-=======
-  <h2 class="bg-dark text-white shadow rounded mb-4 p-1 text-center">Sign in</h2>
+<div class="border-form-div text-center">
+  <h2 class="bg-danger text-white shadow rounded mb-4 p-1">Sign in</h2>
   <div class="border-form-div">
-  <h2>Sign in</h2>
->>>>>>> 92f26e14844bb463dd5181cdb7c60fc7c81c9aef
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <%= f.email_field :email, :autofocus => true %>
     <%= f.password_field :password %>
@@ -77,8 +10,9 @@
       <%= f.label :remember_me %>
     </div>
   <% end %>
-    <hr> 
+  <hr> 
     <%= f.submit "Sign in", :class=>'btn btn-danger mb-2 ' %>
   <% end %>
   <p class="mb-4"> Not a member?<%= render "devise/shared/links" %></p>
+</div>
 </div>

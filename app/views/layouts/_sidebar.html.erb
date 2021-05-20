@@ -1,25 +1,25 @@
-<aside class="d-flex flex-column col-md-2 pt-3" id="sidebar-wrapper">
-    <%# Search %>
-    <%= form_tag products_path, :method => "get", class: 'form-inline justofy-content-around mb-3' do %>
+<aside class="d-flex flex-column col-md-3 pt-3" id="sidebar-wrapper">
+    
+    <%= form_tag products_path, :method => "get", class: 'form-inline justify-content-around mb-3' do %>
         <%= text_field_tag :search, params[:search], class: 'form-control mx-2', placeholder: 'Search' %>
         <%= submit_tag "Search", class: 'btn btn-dark' %>
     <% end %>
-    <%# Filter %>
-    <div class="filter">
-        <h3>Categories</h3>
+
+    <div class="filter text-center">
+        <h4 class="bg-info p-1 rounded">Categories</h4>
         <% @categories.each do |category| %>
             <div><%= link_to category.name, products_path(filter: category.name, filterby: "category") %><div>
         <%end%>
-
-        <h3>Brands</h3>
+        <hr>
+            <h4 class="bg-info p-1 rounded">Brands</h4>
         <% @brands.each do |brand| %>
             <div><%= link_to brand.name, products_path(filter: brand.name, filterby: "brand") %><div>
         <%end%>
 
-        <h3>Stores</h3>
+        <hr>
+            <h4 class="bg-info p-1 rounded">Stores</h4>
         <% @stores.each do |store| %>
             <div><%= link_to store.name, products_path(filter: store.name, filterby: "store") %><div>
         <%end%>
     </div>
-
 </aside>

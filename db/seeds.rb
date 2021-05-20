@@ -7,13 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Category.create(name: "Laptops")
 Brand.create(name: "Dell")
-User.create(
-    name: "Nouran",
-    email: "nouran@yahoo.com",
-    avatar: "avatar.png",
-    password: "123456",
-    role: "seller"
-)
 Store.create(
     name: "Carrefour",
     summary: "Hyper Market",

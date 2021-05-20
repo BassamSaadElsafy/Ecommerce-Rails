@@ -1,28 +1,60 @@
-<h1>Editing Order</h1>
-
-<%= form_with(model: @order, local: true) do |form| %>
-  <p>
-    title <span><%= @product.title %></span>
-  </p>
-  <p>
-    description <span><%= @product.description %></span>
-  </p>
-  <p>
-    Total price <span><%= @order.quantity*@product.price %></span>
-  </p>
-  <p>
-    <%= form.label :quantity %><br>
-    <%= form.number_field :quantity, max: @product.quantity, min: "0" %>
-  </p>
-  <p>
-    category <span><%= Category.find(@product.category_id).name %></span>
-  </p>
-  <p>
-    brand <span><%= Brand.find(@product.brand_id).name %></span>
-  </p> 
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
-<%= link_to 'Show', @order %>
-<%= link_to 'Back', orders_path %>
+<div class="row justify-content-center">
+<div class="col-9 border p-1 m-5">
+<h1 class="text-center mt-3 m-2 bg-primary rounded shadow">Edit Order</h1><hr />
+<div class="m-3">
+<table class="table table-sm table-striped shadow rounded text-center">
+  <thead class="thead-dark">
+    <tr>
+        <th>Product</th>
+        <th>Image</th>
+        <th>Total Price</th>
+        <th>quantity</th>
+        <th>Category | Brand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if !@order.nil? %>
+      <% @order.order_products.each do |ordprod| %>
+        <tr>
+            <td>
+                <%= ordprod.product.title %>
+            </td>
+            <td>
+                <%= (ordprod.product.image.attached?) ? image_tag(ordprod.product.image, size: "120x100") : "No Image" %>
+            </td>
+            <td>
+              <%= ordprod.quantity*ordprod.product.price %>
+            </td>
+            <td>
+              <%= ordprod.quantity %>
+            </td>
+            <td>
+              <%= ordprod.product.category.name %> | <%= ordprod.product.brand.name %>
+            </td>
+        </tr>
+      <% end %>
+      <tr class="table-warning">
+        <td colspan="2" class="bg-dark text-center text-white h5">State</td>
+        <td colspan="3" class="text-center h5"><%= @order.state %></td>
+      </tr>
+  </tbody>
+</table>
+  <div class="text-center h5">
+    <%= form_with(url: order_path(@order.id), method: "put") do |form| %>
+        <%= form.submit "CheckOut", :class => 'btn btn-dark shadow' %>
+    <% end %> 
+  </div>
+  <% else %>
+      <tr>
+        <td colspan="6" class="text-center h5">No Orders</td>
+      </tr>
+  </tbody>
+</table>
+  <% end %>
+</div>
+<div class="text-center mt-5 mb-1">
+  <%= link_to 'Order', orders_path , class: 'btn btn-outline-primary' %>
+  <%= link_to 'Back', carts_path , class: 'btn btn-outline-dark' %>
+</div>
+</div>
+</div>
