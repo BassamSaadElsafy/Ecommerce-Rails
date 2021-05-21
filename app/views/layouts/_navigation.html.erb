@@ -1,25 +1,28 @@
-<nav class="navbar navbar-dark navbar-static-top navbar-expand-md bg-danger mb-3 p-2">
+<nav class="navbar navbar-dark navbar-static-top navbar-expand-md bg-secondary p-2">
     <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav mr-auto">
             <% if current_user %>
-                <li class='nav-item p-1 shadow rounded'><%= link_to 'Home', welcome_index_path, class: 'nav-link text-white btn-outline-primary rounded' %></li>  
-                <li class='nav-item p-1 shadow rounded'><%= link_to 'Products', products_path, class: 'nav-link text-white btn-outline-primary rounded' %></li>
-                <li class='nav-item p-1 shadow rounded'><%= link_to 'Cart', carts_path, class: 'nav-link text-white btn-outline-warning rounded' %></li>
-                <li class='nav-item p-1 shadow rounded'><%= link_to 'Orders', orders_path, class: 'nav-link text-white btn-outline-info rounded' %></li>
-                <li class='nav-item p-1 shadow rounded'><%= link_to 'Store', store_orders_path, class: 'nav-link text-white btn-outline-primary rounded' %></li>
+                <li class='nav-item shadow my-1 mx-2 rounded'><%= link_to 'Home', welcome_index_path, class: 'nav-link text-white btn-outline-danger rounded' %></li>  
+                <li class='nav-item shadow my-1 mx-2 rounded'><%= link_to 'Products', products_path, class: 'nav-link text-white btn-outline-danger rounded' %></li>
+                <li class='nav-item shadow my-1 mx-2 rounded'><%= link_to 'Cart', carts_path, class: 'nav-link text-white btn-outline-danger rounded' %></li>
+                <li class='nav-item shadow my-1 mx-2 rounded'><%= link_to 'Orders', orders_path, class: 'nav-link text-white btn-outline-danger rounded' %></li>
+                <li class='nav-item shadow my-1 mx-2 rounded'><%= link_to 'Store', store_orders_path, class: 'nav-link text-white btn-outline-danger rounded' %></li>
             <% unless current_user.superadmin_role? %>
             <% end %>
             </ul>
             <ul class="nav navbar-nav ml-auto">
-                <li class='nav-item p-1 shadow rounded'><%= link_to current_user.name ,welcome_index_path, class: 'nav-link text-white btn-outline-secondary rounded' %></li>
+                <li class='nav-item my-1 mx-2 shadow rounded'><%= link_to current_user.name ,welcome_index_path, class: 'nav-link text-white btn-outline-danger rounded' %></li>
             <% if current_user.superadmin_role? %>
-                <li class='nav-item p-1 shadow rounded'><%= link_to 'Manage App', "/admin", class: 'nav-link text-white btn-outline-success rounded' %></li> 
+                <li class='nav-item shadow my-1 mx-2 rounded'><%= link_to 'Manage App', "/admin", class: 'nav-link text-white btn-outline-danger rounded' %></li> 
             <% end %>
-                <li class='nav-item p-1 shadow rounded'><%= link_to "Log Out" , destroy_user_session_path, method: :delete, class: 'nav-link text-white btn-outline-danger rounded' %></li>
+                <li class='nav-item shadow my-1 mx-2 rounded'><%= link_to "Log Out" , destroy_user_session_path, method: :delete, class: 'nav-link text-white btn-outline-danger rounded' %></li>
             <%else%>
-                <li class='nav-item p-1 shadow rounded'><%= link_to "Sign Up" , new_user_registration_path, class: 'nav-link text-white btn-outline-primary rounded' %></li>
-                <li class='nav-item p-1 shadow rounded'><%= link_to "Sign In" , new_user_session_path, class: 'nav-link text-white btn-outline-primary rounded' %></li>
+                <li class='nav-item shadow my-1 mx-2 rounded'><%= link_to "Sign Up" , new_user_registration_path, class: 'nav-link text-white btn-outline-primary rounded' %></li>
+                <li class='nav-item shadow my-1 mx-2 rounded'><%= link_to "Sign In" , new_user_session_path, class: 'nav-link text-white btn-outline-primary rounded' %></li>
             <% end %>
             </ul>
         </div>

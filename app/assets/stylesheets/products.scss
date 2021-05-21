@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.container {
+  padding: 0
+}
+
 #sidebar-wrapper {
     min-height: 100vh;
     background-color: #eee;
@@ -10,10 +14,19 @@
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
 }
+
+.products-page {
+  padding: 0
+}
+
 .card-body > a:first-of-type {
     color: black;
     text-decoration: none;
-} 
+}
+
+.price-filter input {
+  max-width: 100%
+}
 
 main section.products-index,
   .products {
@@ -23,28 +36,21 @@ main section.products-index,
     justify-content: space-around;
 
     .product {
-      // flex:      1;
-      max-width: 260px;
-      // so that footer within can be positioned absolutely
+      max-width: 280px;
       position:  relative;
-
       border:        1px solid #ccc;
       border-radius: 5px;
       padding:       15px;
       padding-bottom: 80px;
       margin-top:    20px;
-    //   margin-right:    10px;
-    //   margin:        10px;
+      //   margin-right:    10px;
+      //   margin:        10px;
 
       header img {
         max-width: 100%;
         max-height: 140px;
         margin: auto;
         display: block;
-      }
-
-      p{
-
       }
 
       footer {
@@ -103,5 +109,22 @@ main section.products-show {
     img.main-img {
       max-width: 100%;
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .products-page {
+    position: relative;
+  }
+
+  #sidebar-wrapper {
+    position: absolute;
+    z-index: 2;
+  }
+}
+
+@media (max-width: 525px) {
+  .search-form {
+    margin-top: 1rem;
   }
 }
