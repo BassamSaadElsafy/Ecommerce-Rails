@@ -33,7 +33,9 @@
                     <th colspan="3" class="bg-primary text-center text-white h5">Action</th>
                     <th colspan="2" class="text-center h5">
                       <% if order.state == 'pending' %>
-                          <%= link_to "confirm", store_response_path(order.id), class: 'btn btn-outline-success', method: :put %>
+                          <%= form_with(url: store_response_path(order.id), method: "put") do |form| %>
+                            <%= form.submit "confirm", :class => 'btn btn-dark shadow' %>
+                          <% end %>
                       <% else %>
                         <% if order.order.state == 'confirmed' %>
                           <%= link_to "deliver", store_response_path(order.id), class: 'btn btn-outline-warning', method: :put %>
