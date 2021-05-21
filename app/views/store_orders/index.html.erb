@@ -6,59 +6,46 @@
     <% if ! @orders.empty? %>
         <% @orders.each do |order| %>
 <table class="table table-sm table-striped shadow rounded text-center">
-  <thead class="thead-dark">
-    <tr>
-        <th>Product</th>
-        <th>Image</th>
-        <th>Total Price</th>
-        <th>Quantity</th>
-        <th>Available Quantity</th>
-    </tr>
-</thead>
-<tbody>
-        <tr class="">
-            <td>
-                <%= order.product.title %>
-            </td>
-            <td>
-                  <%= (order.product.image.attached?) ? image_tag(order.product.image, size: "120x100") : "No Image" %>
-            </td>
-            <td>
-              <%= order.quantity*order.product.price %>
-            </td>
-            <td>
-              <%= order.quantity %>
-            </td>
-            <td>
-              <%= order.product.quantity %>
-            </td>
+            <thead class="thead-dark">
+              <tr>
+                  <th>Product</th>
+                  <th>Image</th>
+                  <th>Total Price</th>
+                  <th>Quantity</th>
+                  <th>Available Quantity</th>
+              </tr>
+          </thead>
+          <tbody>
+                  <tr class="">
+                      <td><%= order.product.title %></td>
+                      <td><%= (order.product.image.attached?) ? image_tag(order.product.image, size: "120x100") : "No Image" %></td>
+                      <td><%= order.quantity*order.product.price %></td>
+                      <td><%= order.quantity %></td>
+                      <td><%= order.product.quantity %></td>
+                  </tr>
 
-        </tr>
-        <tr class="table-info">
-          <td colspan="3" class="bg-secondary text-center text-white h5">State</td>
-          <td colspan="2" class="text-center h5"><%= order.state %></td>
-        </tr> 
-          <tr>
-        <th colspan="3" class="bg-primary text-center text-white h5">Action</th>
-        <th colspan="1" class="text-center h5">
-        <% if order.product.quantity >= order.quantity %>
-          <%= form_with(url: store_response_path(order.id), method: "put") do |form| %>
-                      <%= form.hidden_field  :state ,value: 1, min: 1, max: 1 %>
-                      <%= form.submit "Approve", :class => 'btn btn-outline-success', data: { confirm: 'Do you want to approve this ( ' + order.product.title + ' ) product?'} %>
-          <% end %>
-        <% end %>
-        </th>
-        <th colspan="1" class="text-center h5">
+          <tr class="table-info">
+                    <td colspan="3" class="bg-secondary text-center text-white h5">State</td>
+                    <td colspan="2" class="text-center h5"><%= order.state %></td>
+          </tr>
 
-          <%= form_with(url: store_response_path(order.id), method: "put") do |form| %>
-                      <%= form.hidden_field  :state ,value: 0, min: 0, max: 0 %>
-                      <%= form.submit "Cancel", :class => 'btn btn-outline-danger d-inline', data: { confirm: 'Do you want to cancel this ( ' + order.product.title + ' ) product?'} %>
-          <% end %>
-        </th>
+           <tr>
+                    <th colspan="3" class="bg-primary text-center text-white h5">Action</th>
+                    <th colspan="2" class="text-center h5">
+                      <% if order.state == 'pending' %>
+                          <%= link_to "confirm", store_response_path(order.id), class: 'btn btn-outline-success', method: :put %>
+                      <% else %>
+                        <% if order.order.state == 'confirmed' %>
+                          <%= link_to "deliver", store_response_path(order.id), class: 'btn btn-outline-warning', method: :put %>
+                        <% else %>
+                          <p>Waiting to deliver</p>
+                        <% end %>
+                      <% end %>
+                    </th>
+                  </tr>
+              </tbody>
+            </table>
       <% end %>
-    </tr>
-        </tbody>
-      </table>
     <% else %>
       <table class="table table table-striped shadow rounded text-center mb-4">
           <tr>

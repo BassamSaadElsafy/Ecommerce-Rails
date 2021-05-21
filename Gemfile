@@ -70,3 +70,6 @@ gem 'mysql2', '>= 0.4.4'
 
 gem 'rails_admin'
 gem 'cancancan'
+
+#page caching
+gem "actionpack-page_caching"

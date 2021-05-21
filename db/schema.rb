@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_224513) do
+ActiveRecord::Schema.define(version: 2021_05_19_094625) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -39,16 +39,6 @@ ActiveRecord::Schema.define(version: 2021_05_19_224513) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "carts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "quantity"
-    t.bigint "product_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_carts_on_product_id"
-    t.index ["user_id"], name: "index_carts_on_user_id"
-  end
-
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -61,11 +51,6 @@ ActiveRecord::Schema.define(version: 2021_05_19_224513) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_images_on_product_id"
-  end
-
-  create_table "listed_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "order_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -99,6 +84,8 @@ ActiveRecord::Schema.define(version: 2021_05_19_224513) do
     t.text "description"
     t.decimal "price", precision: 30, scale: 2, default: "0.0"
     t.integer "quantity", default: 0
+    t.integer "rate"
+    t.integer "reviewers"
     t.bigint "category_id"
     t.bigint "brand_id"
     t.bigint "store_id"
@@ -122,7 +109,6 @@ ActiveRecord::Schema.define(version: 2021_05_19_224513) do
     t.string "name"
     t.string "avatar"
     t.string "password"
-    t.bigint "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -135,7 +121,6 @@ ActiveRecord::Schema.define(version: 2021_05_19_224513) do
     t.boolean "buyer_role", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["store_id"], name: "index_users_on_store_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

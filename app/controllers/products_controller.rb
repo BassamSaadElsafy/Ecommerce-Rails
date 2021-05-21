@@ -2,7 +2,9 @@ class ProductsController < ApplicationController
     
     ##authentication required for this operations
     before_action :authenticate_user!, :except => [:show, :index]
-
+    before_action :filter_parameters
+    self.page_cache_directory = :domain_cache_directory
+    caches_page :show
     #Get all Products or #Filtared Product
     def index
         if(params[:filter])
@@ -19,9 +21,10 @@ class ProductsController < ApplicationController
     #Add New Product
     def create
         @product = Product.new(product_params)
-        @product.store_id = current_user.store_id
-        # @product.reviewers = 0
-        # @product.rate = 0
+        @product.store_id = current_user.store.id
+        # @product.store_id = current_user.store.id
+        @product.reviewers = 0
+        @product.rate = 0
         @product.save
         if @product.save
             redirect_to @product
@@ -48,6 +51,15 @@ class ProductsController < ApplicationController
         else
             render 'edit'
         end
+    end
+
+    def rate
+        @product = Product.find(params[:id])
+
+        @product.update(reviewers: (@product.reviewers+1) )
+        @product.update(rate: ((@product.rate + params[:rate].to_i)/2))
+
+        redirect_to @product
     end
 
     #Delete Product Details
@@ -87,6 +99,10 @@ class ProductsController < ApplicationController
     
     private
         def product_params
-            params.require(:product).permit(:title, :description, :price, :quantity, :category_id, :brand_id, :store_id, :image)
+            params.require(:product).permit(:title, :rate, :description, :price, :quantity, :category_id, :brand_id, :image)
+        end
+
+        def domain_cache_directory
+            Rails.root.join("public", request.domain)
         end
 end

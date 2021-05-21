@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @orderprod = OrderProduct.where(order_id: @order.id)
     @orderprod.each do |ordprod|
+      ordprod.update(state: "pending")
       (ordprod.product).update(quantity: ordprod.product.quantity-ordprod.quantity)
     end
     if @order.update(state: "pending")

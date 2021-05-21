@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   ###############################################################################
 
   ############################# Product Routes ##################################
+  put "rate.product/:id" => 'products#rate', as: 'rate_product'
   get "/fetch_products" => 'products#filter_products', as: 'fetch_products'
   resources :products
   ###############################################################################
