@@ -3,15 +3,12 @@ class ProductsController < ApplicationController
     ##authentication required for this operations
     before_action :authenticate_user!, :except => [:show, :index]
     before_action :filter_parameters
-    self.page_cache_directory = :domain_cache_directory
-    caches_page :show
+    #self.page_cache_directory = :domain_cache_directory
+    #caches_page :show
     #Get all Products or #Filtared Product
     def index
-        if(params[:filter])
-            @products = Product.filter(params[:filter], params[:filterby])
-        else
-            @products = Product.search(params[:search])
-        end
+        @searched_term = params[:search]
+        @products = Product.search(params[:search])
     end
 
     #Get New Product Page
@@ -78,6 +75,11 @@ class ProductsController < ApplicationController
 
     #Filter Products By Price
     def filter_products
+        
+        unless @searched_term.nil? || @searched_term.empty?
+            @products = Product.search(@searched_term)
+        end
+
         if params[:categories].present? || params[:brands].present? || params[:stores].present?
             if params[:categories].present?
                 @products = (@products.nil?) ? Product.where(category_id: params[:categories]) : @products.where(category_id: params[:categories])

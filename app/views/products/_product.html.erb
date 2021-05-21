@@ -12,7 +12,9 @@
           <div class="mb-4">
               <%= form.submit "Add to Cart", :class => 'btn btn-sm btn-warning text-dark shadow', data: { confirm: 'Do you want to add ( ' + product.title + ' ) to your cart?'} %>
           </div>
-        <% end %>    
+        <% end %> 
+    <% else %>
+        <span>Out of stock</span>   
     <% end %>
     <%= link_to product, class: 'btn btn-default pull-right' do %>
     Details &raquo;
