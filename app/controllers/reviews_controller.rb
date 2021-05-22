@@ -8,8 +8,11 @@ class ReviewsController < ApplicationController
     end
 
     def comment
-        if Review.where(user_id: current_user.id, product_id: params[:id]).empty?
-            Review.create(user_id: current_user.id, product_id: params[:id], comment: params[:comment])
+        @product = Product.find(params[:id]) 
+        if @product.check_order(@product, current_user.id)
+            if Review.where(user_id: current_user.id, product_id: params[:id]).empty?
+                Review.create(user_id: current_user.id, product_id: params[:id], comment: params[:comment])
+            end
         end
         redirect_to request.referrer
     end

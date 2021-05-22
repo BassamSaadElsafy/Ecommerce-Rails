@@ -40,8 +40,12 @@
         <% else %>
             <h5 class="bg-secondary m-4">Out of stock</h5>
         <% end %>
-        <% if current_user && current_user.id != @product.store.user_id %>
+
+        <%# User Reviews %>
+        <% if current_user && current_user.id != @product.store.user_id && @product.check_order(@product, current_user.id) %>
             <hr>
+        <%# Rate %>
+
             <% if @rate.check_rate(@product, current_user.id) %>
                     <%= form_with(url: rate_product_path(@product.id), method: "post") do |f| %>
                         <div class="border d-inline p-3 rounded mr-2">
@@ -54,14 +58,18 @@
 
             <h5 class="bg-info">Your Rate: <%= @rate.get_rate(@product, current_user.id) %></h5>
             <% end %>
+            <%# End Rate %>
             <hr>
+            <%# Comment %>
             <% if (Review.new).check_reviews(@product, current_user.id) %>
                 <%= form_with(url: comment_product_path(@product.id), method: "post") do |f| %>
                     <%= f.text_field :comment %>
                     <%= f.submit "review", :class => 'btn btn-sm btn-outline-secondary shadow' %>
                 <% end %>
             <% end %>
+            <%# End Comment %>
         <% end %>
+            <%# End Reviews %>
 
         </div>
         <% if !@reviews.empty? %>

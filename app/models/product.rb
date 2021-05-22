@@ -43,4 +43,16 @@ class Product < ApplicationRecord
         end
     end
 
+    def check_order(prod, id)
+        @orders = Order.where(user_id: id, state: "delivered")
+        if !@orders.empty?
+            @orders.each do |order|
+                if !(order.order_products).where(product_id: prod.id).empty?
+                    return true
+                end
+            end
+        end
+        return false
+    end
+
 end
