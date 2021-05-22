@@ -1,16 +1,16 @@
-<div class="container-fluid">
+<div class="products-page">
     <div class="row">
         <%= render 'layouts/sidebar'%>
         <div class="main-content col-md-9">
             <div class="container">
                 <div class="d-flex justify-content-center">
-                    <div class="mr-3 mt-2">
+                    <div class="mr-3 align-self-center">
                         <%= link_to "Add Product", new_product_path, class: 'd-inline btn btn-outline-primary' %>
                     </div>
 
                     <%= form_tag products_path, :method => "get", class: 'form-inline justofy-content-around' do %>
                         <%= text_field_tag :search, params[:search], class: 'form-control mx-1', placeholder: 'Search' %>
-                        <%= submit_tag "Search", class: 'btn btn-dark' %>
+                        <%= submit_tag "Search", class: 'btn btn-dark', onclick: 'checkDimensions()' %>
                     <% end %>
                 </div>
                 <hr>

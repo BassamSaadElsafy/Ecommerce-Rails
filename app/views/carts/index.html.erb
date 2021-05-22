@@ -1,67 +1,68 @@
 <div class="row justify-content-center">
-<div class="col-9 border p-1 m-5">
-<h1 class="text-center mt-3 m-2 bg-warning rounded shadow">My Cart</h1>
-<hr />
-<div class="m-3">
-      <% if ! @cart.nil? %>
-        <table class="table table-sm table-striped shadow rounded text-center">
-          <thead class="thead-dark">
-            <tr>
-                <th>Quantity</th>
-                <th>Product</th>
-                <th>Image</th>
-                <th>Total Price</th>
-                <th colspan="3">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-          <% @cart.order_products.each do |ordprod| %>
-            <tr>
+  <div class="col-9 border p-1 m-5">
+    <h1 class="text-center mt-3 m-2 bg-warning rounded shadow">My Cart</h1>
+    <hr />
+    <div class="m-3">
+          <% if ! @cart.nil? %>
+            <table class="table table-sm table-striped shadow rounded text-center">
+              <thead class="thead-dark">
+                <tr>
+                    <th>Quantity</th>
+                    <th>Product</th>
+                    <th>Image</th>
+                    <th>Total Price</th>
+                    <th colspan="3">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @cart.order_products.each do |ordprod| %>
+                  <tr>
 
-                  <td><%= ordprod.quantity %></td>
+                      <td><%= ordprod.quantity %></td>
 
-                  <td><%= ordprod.product.title %></td>
+                      <td><%= ordprod.product.title %></td>
 
-                  <td><%= (ordprod.product.image.attached?) ? image_tag(ordprod.product.image, size: "120x100") : "No Image" %></td>
+                      <td><%= (ordprod.product.image.attached?) ? image_tag(ordprod.product.image, size: "120x100") : "No Image" %></td>
 
-                  <td><%= ordprod.quantity * ordprod.product.price %></td>
-                  
-                  <%# Delete Cart %>
-                  <td>
-                    <%= form_with(url: remove_product_path(ordprod.id), method: "delete") do |form| %>
-                      <%= form.submit "X", :class => 'btn btn-danger text-dark shadow', data: { confirm: 'Are you sure?'} %>
-                    <% end %>
-                  </td>
-                  
-                  <%# Add to Cart %>
-                  <td>
-                    <%= form_with(url: add_to_cart_path(ordprod.product.id), method: "post") do |form| %>
-                      <td><%= link_to '++', add_to_cart_path(ordprod.product.id), class: 'btn btn-success', method: :post %></p></td>
-                  <td>
-                    <%= form_with(url: add_to_cart_path(ordprod.product.id), method: "post") do |form| %>
-                      <%= form.hidden_field  :quantity ,value: -1, min: -1, max: -1 %>
-                      <%= form.submit "--", :class => 'btn btn-warning text-dark shadow' %>
-                    <% end %>
-                  </td>  
+                      <td><%= ordprod.quantity * ordprod.product.price %></td>
+                      
+                      <%# Delete Cart %>
+                      <td>
+                        <%= form_with(url: remove_product_path(ordprod.id), method: "delete") do |form| %>
+                          <%= form.submit "X", :class => 'btn btn-danger text-dark shadow', data: { confirm: 'Are you sure?'} %>
+                        <% end %>
+                      </td>
+                      
+                      <%# Add to Cart %>
+                      <td>
+                        <%= form_with(url: add_to_cart_path(ordprod.product.id), method: "post") do |form| %>
+                          <td><%= link_to '++', add_to_cart_path(ordprod.product.id), class: 'btn btn-success', method: :post %></p></td>
+                      <td>
+                        <%= form_with(url: add_to_cart_path(ordprod.product.id), method: "post") do |form| %>
+                          <%= form.hidden_field  :quantity ,value: -1, min: -1, max: -1 %>
+                          <%= form.submit "--", :class => 'btn btn-warning text-dark shadow' %>
+                        <% end %>
+                      </td>  
 
-            </tr>
-          <% end %>
-          </tbody>
-          </table>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
             <div class="text-center">
                 <%= link_to 'put in Order', edit_order_path(@cart.id), class: 'btn btn-success' %>
                 <%= form_with(url: remove_cart_path(@cart.id), method: "delete") do |form| %>
                   <%= form.submit "Remove", :class => 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
                 <% end %>
             </div>
-    <% else %>
-        <table class="table table table-striped shadow rounded text-center mb-4">
-            <tr>
-              <td colspan="6" class="text-center h4">No Products Found</td>
-            </tr>
-      </table>
-      <hr>
-    <% end %>
-</div>
-</div>
+            <% end %>
+          <% else %>
+            <table class="table table table-striped shadow rounded text-center mb-4">
+              <tr>
+                <td colspan="6" class="text-center h4">No Products Found</td>
+              </tr>
+            </table>
+            <hr>
+          <% end %>
+    </div>
+  </div>
 </div> 
