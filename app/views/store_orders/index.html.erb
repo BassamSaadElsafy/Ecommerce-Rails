@@ -29,7 +29,7 @@
               <td colspan="1" class="bg-dark text-center text-white h6">Action</td>
             </tr>
             <tr class="table-dark text-dark">
-              <td colspan="2"><%= order.order.address.address %></td> 
+              <%# <td colspan="2"><%= order.addresses.address %></td>
               <td colspan="2" class="text-center h5"><%= order.state %></td>
               <td colspan="1" class="text-center h5">
                 <% if order.state == 'pending' %>
@@ -38,7 +38,9 @@
                     <% end %>
                 <% else %>
                   <% if order.order.state == 'confirmed' %>
-                    <%= link_to "deliver", store_response_path(order.id), class: 'btn btn-warning shadow', method: :put %>
+                    <%= form_with(url: store_response_path(order.id), method: "put") do |form| %>
+                      <%= form.submit "deliver", :class => 'btn btn-warning shadow' %>
+                    <% end %>
                   <% else %>
                     <p>Waiting...</p>
                   <% end %>
