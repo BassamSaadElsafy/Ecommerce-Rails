@@ -75,3 +75,5 @@ gem 'cancancan'
 gem "actionpack-page_caching"
 
 gem 'faker'
+
+gem 'gravtastic'
