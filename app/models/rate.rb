@@ -2,6 +2,9 @@ class Rate < ApplicationRecord
     belongs_to :user
     belongs_to :product
 
+    validates :rate, numericality: true
+    validates :rate, presence: true
+
     def product_rate(prod)
         @Rates = Rate.where(product_id: prod.id)
         tot_rate = 0

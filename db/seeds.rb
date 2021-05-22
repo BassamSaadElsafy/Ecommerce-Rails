@@ -1,42 +1,24 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-@cat   = Category.create(name: "Laptops")
-@brand = Brand.create(name: "Dell")
-@store = Store.create(
-    name: "Carrefour",
-    summary: "Hyper Market",
+require 'faker'
+
+8.times do
+    Category.create(name: Faker::Device.platform)
+    Brand.create(name: Faker::Device.manufacturer)
+end
+
+Store.create(
+    name: Faker::Device.manufacturer,
+    summary: Faker::Hacker.say_something_smart,
     user_id: 1
 )
 
-Product.create(
-    title: "pro1",
-    price: 2000,
-    quantity: 20,
-    category_id: @cat.id,
-    brand_id:@brand.id,
-    store_id: @store.id,
-)
-
-Product.create(
-    title: "pro2",
-    price: 2000,
-    quantity: 20,
-    category_id: @cat.id,
-    brand_id:@brand.id,
-    store_id: @store.id,
-)
-
-
-Product.create(
-    title: "pro3",
-    price: 2000,
-    quantity: 20,
-    category_id: @cat.id,
-    brand_id:@brand.id,
-    store_id: @store.id,
-)
+25.times do |t|
+    Product.create(
+        title: Faker::Device.platform,
+        price: Faker::Number.decimal(l_digits: 3, r_digits: 2),
+        quantity: Faker::Number.between(from: 10, to: 50),
+        description: Faker::Hacker.say_something_smart,
+        category_id: Faker::Number.between(from: 1, to:6),
+        brand_id: Faker::Number.between(from: 1, to: 6),
+        store_id: 1,
+    )
+end

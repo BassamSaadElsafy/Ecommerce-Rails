@@ -43,10 +43,10 @@
   <div class="text-center h5 p-2 m-4 border">
   <%= form_with(url: order_path(@order.id), method: "put") do |form| %>
       <p>
-        <%= form.label :address %> | <%= form.text_field :address, :required => true %>
+        <%= form.label :address %> | <%= form.text_field :address, required: true %>
       </p>  
       <p>
-        <%= form.label :billing %> | <%= form.text_field :billing, :required => true %>
+        <%= form.label :billing %> | <%= form.text_field :billing, required: true %>
       </p>                  
       <%= form.submit "CheckOut", :class => 'btn btn-dark shadow' %>
   <% end %>
