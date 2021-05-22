@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="d-flex justify-content-center">
                     
-                    <% if current_user.seller_role? %>
+                    <% if current_user && current_user.seller_role? %>
 
                         <div class="mr-3 align-self-center">
                             <%= link_to "Add Product", new_product_path, class: 'd-inline btn btn-outline-primary' %>

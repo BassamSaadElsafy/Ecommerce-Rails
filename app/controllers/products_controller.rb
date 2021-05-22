@@ -20,9 +20,7 @@ class ProductsController < ApplicationController
         @product = Product.new(product_params)
         @product.store_id = current_user.store.id
         # @product.store_id = current_user.store.id
-        @product.reviewers = 0
-        @product.rate = 0
-        @product.save
+    
         if @product.save
             redirect_to @product
         else
