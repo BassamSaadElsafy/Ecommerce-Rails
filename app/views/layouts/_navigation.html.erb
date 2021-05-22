@@ -11,17 +11,24 @@
                 <li class='nav-item p-1  rounded'><%= link_to image_tag("product2.svg", size: "40x40"), orders_path, class: 'nav-link text-white btn-outline-success rounded' %></li>
                 <li class='nav-item p-1  rounded'><%= link_to image_tag("store1.svg", size: "40x40"), store_orders_path, class: 'nav-link text-white btn-outline-primary rounded' %></li>
             </ul>
-            <% if current_user %>
-                <ul class="nav navbar-nav ml-auto">
+            <ul class="nav navbar-nav ml-auto">
+            
+                <% if current_user %>
 
-                <li class='nav-item p-1  rounded'>  <%= link_to welcome_index_path do %>
-                    <% if current_user.avatar.attached?%>
-                        <%image_tag current_user.avatar,size: "50x50" ,class: "rounded-circle" %>
-                    <%else%>
+                <li class='nav-item p-1 shadow   rounded'>  <%= link_to welcome_index_path do %>
+                    
+
+                <% if  current_user.avatar.attached?%>
+                    <%image_tag current_user.avatar,size: "35x35" ,class: "rounded-circle" %>
+                <% elsif current_user.superadmin_role? %>
+                    <%image_tag("admin.jpg", size: "35x35",class: "rounded-circle") %>
+                <%else%>
                         <%image_tag("default.png", size: "35x35",class: "rounded-circle") %>
-                    <%end%>
                 <%end%>
+                <% end %>
+
                 </li>
+
                 <%# .seller_role? %>
                     <% if current_user  %>   
                         <li class='nav-item p-1 shadow rounded'><%= link_to 'Store', store_orders_path, class: 'nav-link text-white btn-outline-primary rounded' %></li> 
