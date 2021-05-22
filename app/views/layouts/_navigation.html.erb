@@ -43,7 +43,7 @@
                         <span>Orders</span>
                     <%end%>
                 </li>
-                <% if current_user.seller_role? %>
+                <% if current_user %>
                     <li class='nav-item p-1 rounded'>
                         <%= link_to store_orders_path, class: 'nav-link text-white btn-outline-primary rounded' do %>
                             <i class="fas fa-store-alt"></i>
@@ -61,7 +61,7 @@
                         <% elsif current_user.superadmin_role? %>
                             <%image_tag("admin.jpg", size: "50x50",class: "rounded-circle") %>
                         <%else%>
-                                <%image_tag("noimage.svg", size: "50x50",class: "rounded-circle") %>
+                                <%image_tag("noimg.svg", size: "50x50",class: "rounded-circle") %>
                         <%end%>
                 <% end %>
                 </li>                 

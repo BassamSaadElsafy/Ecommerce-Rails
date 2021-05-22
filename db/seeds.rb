@@ -23,7 +23,7 @@ Store.create(
     )
 end
 
-2.times do
+2.times do |t|
     Rate.create(
         rate: Faker::Number.between(from: 1, to:5),
         user_id: 1,

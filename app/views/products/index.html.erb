@@ -7,7 +7,7 @@
                     <span class="px-2 py-1 align-self-center mr-3 d-md-none btn btn-outline-primary" onclick="showSidebar()">
                         <i class="fas fa-filter"></i>
                     </span>                    
-                    <% if current_user && current_user.seller_role? %>
+                    <% if current_user %>
 
                         <div class="mr-3 align-self-center">
                             <%= link_to "Add Product", new_product_path, class: 'd-inline btn btn-outline-primary' %>
