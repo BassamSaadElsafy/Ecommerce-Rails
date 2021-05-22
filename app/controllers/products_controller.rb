@@ -34,6 +34,7 @@ class ProductsController < ApplicationController
     def show
         @product = Product.find(params[:id])
         @rate = Rate.new
+        @reviews = Review.where(product_id: params[:id])
     end
 
     #Show Edit Page

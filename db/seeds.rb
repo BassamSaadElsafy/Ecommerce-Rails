@@ -22,3 +22,9 @@ Store.create(
         store_id: 1,
     )
 end
+
+Rate.create(
+    rate: Faker::Number.between(from: 1, to:5),
+    user_id: 1,
+    product_id: t
+)
