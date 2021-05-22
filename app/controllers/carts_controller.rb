@@ -3,12 +3,6 @@ class CartsController < ApplicationController
     def index
       @cart = Order.find_by(user_id: current_user.id, state: "inCart")
     end
-    
-    def show
-    end
-
-    def new
-    end
 
     def create
       puts "hello world"

@@ -8,11 +8,9 @@
 
   <footer class="actions">
     <% if product.quantity > 0 %>
-        <%= form_with(url: add_to_cart_path(product.id), method: "post") do |form| %>
-          <div class="mb-4">
-              <%= form.submit "Add to Cart", :class => 'btn btn-sm btn-warning text-dark shadow', data: { confirm: 'Do you want to add ( ' + product.title + ' ) to your cart?'} %>
-          </div>
-        <% end %> 
+        <%= link_to add_to_cart_path(product.id), class: 'btn btn-warning text-dark', method: :post do %>
+          <%= fa_icon "shopping-cart", text: 'Add' %>
+        <% end %>
     <% else %>
         <span>Out of stock</span>   
     <% end %>

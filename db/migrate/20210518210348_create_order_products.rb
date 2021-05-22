@@ -4,7 +4,7 @@ class CreateOrderProducts < ActiveRecord::Migration[5.2]
             t.references :order
             t.references :product
             t.string :store_id
-            t.integer :quantity
+            t.integer :quantity, :default => 0
             t.string :state, :default => "inCart"
             t.timestamps
         end

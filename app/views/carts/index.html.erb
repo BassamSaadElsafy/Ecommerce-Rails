@@ -36,17 +36,14 @@
                   <%# Add to Cart %>
                   <td>
                     <%= form_with(url: add_to_cart_path(ordprod.product.id), method: "post") do |form| %>
-                      <%= form.submit "++", :class => 'btn btn-success text-dark shadow', data: { confirm: 'Do you want to one item of ( ' + ordprod.product.title + ' ) to your cart?'} %>
-                    <% end %>
-                  </td>
-                  
-                  <%# Decrease Quantity of Product %>
+                      <td><%= link_to '++', add_to_cart_path(ordprod.product.id), class: 'btn btn-success', method: :post %></p></td>
                   <td>
                     <%= form_with(url: add_to_cart_path(ordprod.product.id), method: "post") do |form| %>
                       <%= form.hidden_field  :quantity ,value: -1, min: -1, max: -1 %>
-                      <%= form.submit "--", :class => 'btn btn-warning text-dark shadow', data: { confirm: 'Do you want to remove one item of ( ' + ordprod.product.title + ' ) to your cart?'} %>
+                      <%= form.submit "--", :class => 'btn btn-warning text-dark shadow' %>
                     <% end %>
-                  </td>   
+                  </td>  
+
             </tr>
           <% end %>
           </tbody>
@@ -63,6 +60,7 @@
               <td colspan="6" class="text-center h4">No Products Found</td>
             </tr>
       </table>
+      <hr>
     <% end %>
 </div>
 </div>

@@ -73,3 +73,5 @@ gem 'cancancan'
 
 #page caching
 gem "actionpack-page_caching"
+
+gem 'faker'

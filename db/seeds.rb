@@ -5,20 +5,38 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Category.create(name: "Laptops")
-Brand.create(name: "Dell")
-Store.create(
+@cat   = Category.create(name: "Laptops")
+@brand = Brand.create(name: "Dell")
+@store = Store.create(
     name: "Carrefour",
     summary: "Hyper Market",
     user_id: 1
 )
 
 Product.create(
-    title: "Dell Inspiron",
-    description: "New Laptop",
-    price: 6500,
+    title: "pro1",
+    price: 2000,
     quantity: 20,
-    category_id: 1,
-    brand_id: 1,
-    store_id: 1
+    category_id: @cat.id,
+    brand_id:@brand.id,
+    store_id: @store.id,
+)
+
+Product.create(
+    title: "pro2",
+    price: 2000,
+    quantity: 20,
+    category_id: @cat.id,
+    brand_id:@brand.id,
+    store_id: @store.id,
+)
+
+
+Product.create(
+    title: "pro3",
+    price: 2000,
+    quantity: 20,
+    category_id: @cat.id,
+    brand_id:@brand.id,
+    store_id: @store.id,
 )

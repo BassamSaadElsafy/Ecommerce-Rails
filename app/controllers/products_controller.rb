@@ -33,6 +33,7 @@ class ProductsController < ApplicationController
     #Show Product Details
     def show
         @product = Product.find(params[:id])
+        @rate = Rate.new
     end
 
     #Show Edit Page

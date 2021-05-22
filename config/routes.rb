@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   ###############################################################################
 
   ############################# Product Routes ##################################
-  put "rate.product/:id" => 'products#rate', as: 'rate_product'
+  # put "rate.product/:id" => 'products#rate', as: 'rate_product'
   get "/fetch_products" => 'products#filter_products', as: 'fetch_products'
   resources :products
   ###############################################################################
@@ -36,6 +36,10 @@ Rails.application.routes.draw do
   ############################# Store_Orders Routes #############################
   get 'store.orders', to: 'store_orders#index', as: 'store_orders'
   put 'store.response/:id', to: 'store_orders#update', as: 'store_response'
+  ###############################################################################
+
+  ############################## Reviews Routes #################################
+  post "rate.product/:id" => 'reviews#rate', as: 'rate_product'
   ###############################################################################
 
   ############################# Product API Routes ##############################
