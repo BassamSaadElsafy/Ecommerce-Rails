@@ -3,8 +3,9 @@ class ProductsController < ApplicationController
     ##authentication required for this operations
     before_action :authenticate_user!, :except => [:show, :index]
     before_action :filter_parameters
-    #self.page_cache_directory = :domain_cache_directory
-    #caches_page :show
+    self.page_cache_directory = :domain_cache_directory
+    caches_page :show
+    
     #Get all Products or #Filtared Product
     def index
         @searched_term = params[:search]

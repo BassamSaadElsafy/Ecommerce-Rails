@@ -42,7 +42,6 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Order.count', -1) do
       delete order_url(@order)
     end
-
     assert_redirected_to orders_url
   end
 end

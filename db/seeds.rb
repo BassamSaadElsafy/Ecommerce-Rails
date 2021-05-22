@@ -23,8 +23,15 @@ Store.create(
     )
 end
 
-Rate.create(
-    rate: Faker::Number.between(from: 1, to:5),
-    user_id: 1,
-    product_id: t
-)
+2.times do
+    Rate.create(
+        rate: Faker::Number.between(from: 1, to:5),
+        user_id: 1,
+        product_id: t
+    )
+    Review.create(
+        comment: Faker::Hacker.say_something_smart,
+        user_id: 1,
+        product_id: t
+    )
+end

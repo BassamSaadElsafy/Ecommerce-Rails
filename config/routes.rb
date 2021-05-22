@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   ############################# Store_Orders Routes #############################
   get 'store.orders', to: 'store_orders#index', as: 'store_orders'
+  get 'store.history', to: 'store_orders#history', as: 'store_history'
   put 'store.response/:id', to: 'store_orders#update', as: 'store_response'
   ###############################################################################
 

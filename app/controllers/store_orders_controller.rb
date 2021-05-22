@@ -23,6 +23,15 @@ class StoreOrdersController < ApplicationController
         end
     end
 
+    def history
+        if !(current_user.store).nil?
+          @store_orders = OrderProduct.where(store_id: current_user.store.id)
+          @orders = @store_orders.where(state: "delivered").order(created_at: :desc)
+        else
+          redirect_to orders_path, alert: 'you do not have store!'
+        end
+    end
+    
     private
 
         def store_orders_params

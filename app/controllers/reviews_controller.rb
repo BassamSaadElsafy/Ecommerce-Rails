@@ -1,8 +1,12 @@
 class ReviewsController < ApplicationController
 
     def rate
-        if Rate.where(user_id: current_user.id, product_id: params[:id]).empty?
-            Rate.create(user_id: current_user.id, product_id: params[:id], rate: params[:rate].to_f)
+        if !(Rate.new).check_rate(Product.find(params[:id]), current_user.id)
+            rate_update()
+        else
+            if Rate.where(user_id: current_user.id, product_id: params[:id]).empty?
+                Rate.create(user_id: current_user.id, product_id: params[:id], rate: params[:rate].to_f)
+            end
         end
         redirect_to request.referrer
     end
@@ -15,6 +19,10 @@ class ReviewsController < ApplicationController
             end
         end
         redirect_to request.referrer
+    end
+
+    def rate_update
+        Rate.find_by(user_id: current_user.id, product_id: params[:id]).update(rate: params[:rate].to_f)
     end
 
     private

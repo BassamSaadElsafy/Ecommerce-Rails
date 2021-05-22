@@ -1,10 +1,12 @@
-<div class="products-page">
+<div class="products-page container-fluid">
     <div class="row">
         <%= render 'layouts/sidebar'%>
         <div class="main-content col-md-9">
             <div class="container">
-                <div class="d-flex justify-content-center">
-                    
+                <div class="d-flex flex-wrap justify-content-center mt-5">
+                    <span class="px-2 py-1 align-self-center mr-3 d-md-none btn btn-outline-primary" onclick="showSidebar()">
+                        <i class="fas fa-filter"></i>
+                    </span>                    
                     <% if current_user && current_user.seller_role? %>
 
                         <div class="mr-3 align-self-center">
@@ -19,7 +21,7 @@
                     <% end %>
                 </div>
                 <hr>
-                <div class="products">
+                <div class="products mb-5">
                     <%= render @products %>
                 </div>
             </div>

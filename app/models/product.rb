@@ -6,8 +6,9 @@ class Product < ApplicationRecord
     has_and_belongs_to_many :orders
     has_many :rates
     has_many :order_products
+    has_many :reviews
     has_many :orders, through: :order_products
-    validates :title, presence: true, length: { minimum: 5 }
+    validates :title, presence: true
     validates :price, :quantity, numericality: true
     validates :description, :price, :quantity, :category_id, :brand_id, presence: true
     

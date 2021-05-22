@@ -1,0 +1,150 @@
+// This solution uses transforms and a caret mixin.
+// What will yours be? Fork this pen and share
+// your solution in this comments.
+
+// This pen's solution is on line 91.
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+
+
+
+/// REQUIRED
+/// ==========================================================
+
+$gutter: 20px;
+$caret-unit: 25px;
+$bubble-bg: rgb(164, 187, 226);
+$bubble-color: rgb(20, 20, 20);
+$cite-color: $bubble-color;
+
+
+/// Opposite Direction
+/// ==========================================================
+/// Returns the opposite direction of each direction in a list
+/// @author Hugo Giraudel
+/// @param {List} $directions - List of initial directions
+/// @return {List} - List of opposite directions
+
+@function opposite-direction($directions) {
+  $opposite-directions: ();
+  $direction-map: (
+    'top': 'bottom',
+    'right': 'left',
+    'bottom': 'top',
+    'left': 'right',
+    'center': 'center',
+    'ltr': 'rtl',
+    'rtl': 'ltr'
+  );
+
+  @each $direction in $directions {
+    $direction: to-lower-case($direction);
+
+    @if map-has-key($direction-map, $direction) {
+      $opposite-directions: append($opposite-directions, unquote(map-get($direction-map, $direction)));
+    } @else {
+      @warn "No opposite direction can be found for `#{$direction}`. Direction omitted.";
+    }
+  }
+
+  @return $opposite-directions;
+}
+
+
+/// Unit Removal
+@function strip-unit($num) {
+    @return $num / ($num * 0 + 1);
+}
+
+
+/// Triangle Mixin
+/// ==========================================================
+
+@mixin caret($point, $border-width, $color) {
+  $opposite: opposite-direction($point);
+  border: $border-width solid transparent;
+  border-#{$opposite}: $border-width solid $color;
+  border-#{$point}: 0;
+  height: 0;
+  width: 0;
+}
+
+
+/// Component
+/// ==========================================================
+
+.speech-bubble {
+  filter: drop-shadow(-1px -1px 2px rgba(black, .10)) drop-shadow(1px 2px 2px rgba(black, .15));
+  margin: 1rem;
+  margin-bottom: ($gutter * 2);
+  padding: 1.5rem 2rem;
+  position: relative;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  background: $bubble-bg;
+  color: $bubble-color;
+
+  &::before {
+    @include caret(bottom, ($caret-unit / 2), $bubble-bg);
+    border-top-width: $caret-unit;
+    content: '';
+    display: block;
+    position: absolute;
+    left: 3rem;
+    bottom: -$caret-unit;
+    transform-origin: center;
+    transform: rotate(90deg) skew(-(strip-unit($caret-unit))+deg) translateY($caret-unit / 1.5);
+  }
+}
+
+
+.speech-bubble cite {
+  position: absolute;
+  bottom: -2rem;
+  left: 4.5rem;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: $cite-color;
+}

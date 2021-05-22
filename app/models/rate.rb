@@ -22,8 +22,8 @@ class Rate < ApplicationRecord
         Rate.where(product_id: prod.id).size
     end
 
-    def check_rate(products, id)
-        (products.rates).where(user_id: id).empty? 
+    def check_rate(product, id)
+        (product.rates).where(user_id: id).empty? 
     end
 
     def get_rate(products, id)

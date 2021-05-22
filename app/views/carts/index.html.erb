@@ -1,3 +1,4 @@
+<div class="container">
 <div class="row justify-content-center">
   <div class="col-9 border p-1 m-5">
     <h1 class="text-center mt-3 m-2 bg-warning rounded shadow">My Cart</h1>
@@ -15,6 +16,7 @@
                 </tr>
               </thead>
               <tbody>
+                
                 <% @cart.order_products.each do |ordprod| %>
                   <tr>
 
@@ -36,25 +38,25 @@
                       <%# Add to Cart %>
                       <td>
                         <%= form_with(url: add_to_cart_path(ordprod.product.id), method: "post") do |form| %>
-                          <td><%= link_to '++', add_to_cart_path(ordprod.product.id), class: 'btn btn-success', method: :post %></p></td>
+                          <%= form.submit "+", :class => 'btn btn-success text-dark shadow' %>
+                        <% end %>
                       <td>
                         <%= form_with(url: add_to_cart_path(ordprod.product.id), method: "post") do |form| %>
                           <%= form.hidden_field  :quantity ,value: -1, min: -1, max: -1 %>
-                          <%= form.submit "--", :class => 'btn btn-warning text-dark shadow' %>
+                          <%= form.submit "-", :class => 'btn btn-warning text-dark shadow' %>
                         <% end %>
                       </td>  
-
                   </tr>
-                <% end %>
-              </tbody>
-            </table>
+          <% end %>
+          </tbody>
+          </table>
             <div class="text-center">
                 <%= link_to 'put in Order', edit_order_path(@cart.id), class: 'btn btn-success' %>
                 <%= form_with(url: remove_cart_path(@cart.id), method: "delete") do |form| %>
                   <%= form.submit "Remove", :class => 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
                 <% end %>
             </div>
-            <% end %>
+
           <% else %>
             <table class="table table table-striped shadow rounded text-center mb-4">
               <tr>
@@ -66,3 +68,4 @@
     </div>
   </div>
 </div> 
+</div>

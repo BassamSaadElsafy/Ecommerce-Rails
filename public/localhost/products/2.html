@@ -4,78 +4,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RailsEcommerce</title>
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="zYTi3YGtD05QNFbmrqf1z/B+lAMLy5a6eHETCV9APj2umPJdNqbc8Yn9Xos75f9yhtBEddbpB5rZfpxgwrDGGg==" />
+<meta name="csrf-token" content="ltuDL+PqQsZX0hdSakt/sWjVFm7YmTN10xViac8albrd3civayS8WpryeSNftCrlFPiZJ3BmpCbl6uGrWa2S7A==" />
     
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" media="all" href="/assets/carts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/forms.self-a28a42568dc8edf3d81f1f2e337e8f889b9250646021cd6d1a3d4abf47fc221b.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/orders.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
-<link rel="stylesheet" media="all" href="/assets/products.self-b60bd29f3cd8eea95e465c98b62eb7b4506c7156f69c6681eb99ef4661cafaf4.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/product_details.self-5932638505a4d70d717c63d44a022c65008f4228308f3c15e6ae0717087c85fa.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/products.self-bc9c3e1a33b0e0bd84774d82e2a9728a033de15f747a923ffb6d2c6ff16d4122.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/scaffolds.self-e353d43f7c08f5180770e19889d7f5dc0671f8c2347b1c221b8425361e5c2510.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/store_orders.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
-<link rel="stylesheet" media="all" href="/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
-<link rel="stylesheet" media="all" href="/assets/application.self-dbcbef78193138d241ca493562ad12f90906f33305aabacabb49902f2cd70261.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/welcome.self-ab1981667faade341705459af39894c97f50d14b8bdd417d14d7e4739eccf83c.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/application.self-10928c8dfead01a3815329be525a34d9f9406ea0f31fc57c6f1721bf76fd51d1.css?body=1" data-turbolinks-track="reload" />
+     %>
+     %>
+     %>
+       %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself">
   </head>
-  <body>
-    <header class="mb-3">
-      <nav class="navbar navbar-dark navbar-static-top navbar-expand-md bg-danger mb-3 p-2">
-    <div class="container">
+  <body class="d-flex flex-column justify-content-between">
+    <header class="">
+      <nav class="navbar navbar-dark navbar-static-top navbar-expand-md bg-dark p-1">
+    <div class="container-fluid">
+        <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <span class="d-md-none m-2">
+                <a title="Admin" href="/welcome/index"><img class="rounded-circle" src="/assets/admin-260036c45566317acbfb56731d50a8fa957a221fa6b48ed59ec8b47e5c2d9f3c.jpg" width="50" height="50" /></a>            </span>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav mr-auto">
-                <li class='nav-item p-1 shadow rounded'><a class="nav-link text-white btn-outline-primary rounded" href="/welcome/index">Home</a></li>  
-                <li class='nav-item p-1 shadow rounded'><a class="nav-link text-white btn-outline-primary rounded" href="/products">Products</a></li>
-                <li class='nav-item p-1 shadow rounded'><a class="nav-link text-white btn-outline-warning rounded" href="/carts">Cart</a></li>
-                <li class='nav-item p-1 shadow rounded'><a class="nav-link text-white btn-outline-info rounded" href="/orders">Orders</a></li>
-                <li class='nav-item p-1 shadow rounded'><a class="nav-link text-white btn-outline-primary rounded" href="/store.orders">Store</a></li>
+                <li class='nav-item p-1 rounded'>
+                    <a class="nav-link text-white btn-outline-primary rounded" href="/welcome/index">
+                        <i class="fas fa-home text-white"></i>
+                        <span>Home</span>
+</a>                </li>  
+                <li class='nav-item p-1 rounded'>
+                    <a class="nav-link text-white btn-outline-info rounded" href="/products">
+                        <i class="fas fa-boxes"></i>
+                        <span>Products</span>
+</a>                </li>  
+                <li class='nav-item p-1 rounded'>
+                    <a class="nav-link text-white btn-outline-warning rounded" href="/carts">
+                        <i class="fab fa-opencart"></i>
+                        <span>Cart</span>
+</a>                </li>
+                <li class='nav-item p-1 rounded'>
+                    <a class="nav-link text-white btn-outline-success rounded" href="/orders">
+                        <i class="fas fa-shipping-fast"></i>
+                        <span>Orders</span>
+</a>                </li>
+                    <li class='nav-item p-1 rounded'>
+                        <a class="nav-link text-white btn-outline-primary rounded" href="/store.orders">
+                            <i class="fas fa-store-alt"></i>
+                            <span>Store</span>
+</a>                    </li>
             </ul>
             <ul class="nav navbar-nav ml-auto">
-                <li class='nav-item p-1 shadow rounded'><a class="nav-link text-white btn-outline-secondary rounded" href="/welcome/index">Admin</a></li>
-                <li class='nav-item p-1 shadow rounded'><a class="nav-link text-white btn-outline-success rounded" href="/admin">Manage App</a></li> 
-                <li class='nav-item p-1 shadow rounded'><a class="nav-link text-white btn-outline-danger rounded" rel="nofollow" data-method="delete" href="/users/sign_out">Log Out</a></li>
+                 <li class='nav-item p-1 rounded d-none d-md-block'> 
+                    <a title="Admin" href="/welcome/index"><img class="rounded-circle" src="/assets/admin-260036c45566317acbfb56731d50a8fa957a221fa6b48ed59ec8b47e5c2d9f3c.jpg" width="50" height="50" /></a>                </li>                 
+                        <li class='nav-item p-1 rounded'>
+                            <a class="nav-link text-white btn-outline-success rounded" href="/admin">
+                                <i class="fas fa-user-cog"></i>
+                                <span>Dashboard</span>
+</a>                        </li>                 
+                    <li class='nav-item p-1 rounded'>
+                        <a class="nav-link text-white btn-outline-danger rounded" rel="nofollow" data-method="delete" href="/users/sign_out">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Sign Out</span>
+</a>                    </li>
             </ul>
         </div>
     </div>
 </nav>
-       
-    </header>
-    <div class="container border shadow rounded mb-5 p-2">
-      <div class="row justify-content-center">
-<div class="col-6 border p-1 m-2">
-<h1 class="text-center mt-3 m-2 bg-primary rounded shadow">Product</h1>
-<div class="m-4 p-1 border text-center">
-    <h2>fdfdfsdf</h2>
-    <img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e4408853c05595375b650801ab9df9f53d324766/My_Photo.jpg" width="220" height="220" />
-    <hr>
-    <p>Price: 456.0 | AvailableQuantity: 5</p>
-    <p>Category: Laptops | Brand: Dell | Store: Carrefour</p>
-    <hr>
-    <h5>Product Description</h5>
-    <p class="border rounded m-1 p-1 mb-3">dfdsf</p>
-    <hr>
-    <div class="border rounded p-3 m-2 text-center">
-            <form action="/add.to.cart/2" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="dpO3BNC3bP07/tZWddXkbek615liTwL5mlVRnYTaWEh/IQNz9W3YD3didiaKa8za5HP/83ZOlpC4RrZdUByiNA==" />
-                
-                    <input value="1" min="1" max="5" type="number" name="quantity" id="quantity" />
-                    <input type="submit" name="commit" value="Add to Cart" class="btn btn-sm btn-warning text-dark shadow" data-confirm="Do you want to add ( fdfdfsdf ) to your cart?" data-disable-with="Add to Cart" />
-                
-</form>        </div>
-        <div class="border rounded p-3 m-2 text-center">
-            <a class="btn btn-primary shadow" href="/products/2/edit">Edit</a>
-            <a data-confirm="Are you sure you want to delete this product?" class="btn btn-danger shadow" rel="nofollow" data-method="delete" href="/products/2">Delete</a>
+          <div class="alert alert-notice">
+    <div class="container shadow alert alert-notice">
+      Cart Changed successfully
+      <a href="#" data-dismiss="alert" class="close">×</a>
     </div>
-    <div class="border rounded p-3 m-2 text-center">
-            <p>Rate: 0 | Reviewers: 1</p>
-            <form action="/rate.product/2" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="iz9jiYFR1YpQpZoTcultTh1wFKj07lqg1Qme5gwhBaJNt1MYqu6tr40QysiG1ht+RZG+4hfd2hYmNiiMZp7JQw==" />
-                    <select name="rate" id="rate"><option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option></select>
-                    <input type="submit" name="commit" value="Rate" class="btn btn-sm btn-info text-dark shadow" data-disable-with="Rate" />
-</form>    </div>
+ 
+    </header>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+<div class="col-md-6 border p-1 m-2">
+<h1 class="text-center mt-3 m-2 bg-primary rounded shadow">Product</h1>
+<div class="m-3 p-1 border text-center">
+    <h2>Windows RT</h2>
+    
+    <hr>
+    <p>Price: 721.68 | AvailableQuantity: 49</p>
+    <p>Category: Windows 10 | Brand: Apple | Store: Dell</p>
+    <h5>Product Description</h5>
+    <p class="border rounded mt-3 p-1 mb-3">We need to bypass the auxiliary JBOD interface!</p>
+    <hr>
+    <p>Rate: 0 | Reviewers: 0</p>
+    <br>
+
+    <div class="border border-primary shadow rounded p-2 m-3 text-center">
+
+                <form action="/add.to.cart/2" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="DadsEmSmBUDBWOi8ovICSLzHKJTFMU8NtTquDSlYOf8eKKaXue2yaIYzOTGJitrXGUkRyudWCIJjoOUA+MVNbw==" />
+                        <input value="1" min="1" max="49" type="number" name="quantity" id="quantity" />
+                        <input type="submit" name="commit" value="Add to Cart" class="btn btn-sm btn-warning text-dark shadow" data-disable-with="Add to Cart" />
+</form>
+    </div>
+        <div class="p-3 m-2 text-center">
+            <h4 class="mb-3 bg-success p-1">Reviews</h4>
+        </div>
 </div>
 <div class="text-center mt-2 mb-1">
     <a class="btn btn-outline-primary" href="/products">Products</a>
@@ -83,7 +120,7 @@
 </div>
 </div>
     </div>
-    <footer class="mt-5">
+    <footer class="bg-dark">
       <div class="bg-dark text-center text-white p-1">
     <h3 class="m-2 mb-3 shadow rounded">Founders</h3>
     <div class="mb-4">
@@ -102,5 +139,28 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script>
+      var x = window.matchMedia("(max-width: 767px)")
+      
+      var path = window.location.pathname
+
+      if(path.includes("welcome") || path == '/') {
+        $('body').addClass("welcome");
+      }
+
+      function showSidebar(){
+        $('#sidebar-wrapper').removeClass('d-none')
+      }
+      function closeSidebar(){
+        $('#sidebar-wrapper').addClass('d-none')
+      }
+      function checkDimensions(){
+        if(x.matches) {
+          closeSidebar()
+        }
+      }
+    </script>
+
   </body>
 </html>

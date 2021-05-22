@@ -5,21 +5,26 @@
     <title>RailsEcommerce</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# <%= stylesheet_link_tag 'products', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# <%= stylesheet_link_tag 'welcome', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# <%= javascript_include_tag 'jquery.min', 'data-turbolinks-track'=> true %>  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself">
   </head>
   <body class="d-flex flex-column justify-content-between">
-    <header class="mb-2">
+    <header class="">
       <%= render 'layouts/navigation' %>
       <%= render 'layouts/messages' %>
     </header>
-    <div class="container border shadow rounded mb-3 px-2 py-4">
+    <div class="container-fluid">
       <%= yield %>
     </div>
-    <footer class="bg-dark mt-2">
+    <footer class="bg-dark">
       <%= render 'layouts/foot' %>
     </footer>
     <!-- Optional JavaScript -->
@@ -30,6 +35,12 @@
 
     <script>
       var x = window.matchMedia("(max-width: 767px)")
+      
+      var path = window.location.pathname
+
+      if(path.includes("welcome") || path == '/') {
+        $('body').addClass("welcome");
+      }
 
       function showSidebar(){
         $('#sidebar-wrapper').removeClass('d-none')
