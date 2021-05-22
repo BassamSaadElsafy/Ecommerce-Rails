@@ -4,13 +4,18 @@
         <div class="main-content col-md-9">
             <div class="container">
                 <div class="d-flex justify-content-center">
-                    <div class="mr-3 align-self-center">
-                        <%= link_to "Add Product", new_product_path, class: 'd-inline btn btn-outline-primary' %>
-                    </div>
+                    
+                    <% if current_user.seller_role? %>
 
-                    <%= form_tag products_path, :method => "get", class: 'form-inline justofy-content-around' do %>
-                        <%= text_field_tag :search, params[:search], class: 'form-control mx-1', placeholder: 'Search' %>
-                        <%= submit_tag "Search", class: 'btn btn-dark', onclick: 'checkDimensions()' %>
+                        <div class="mr-3 align-self-center">
+                            <%= link_to "Add Product", new_product_path, class: 'd-inline btn btn-outline-primary' %>
+                        </div>
+
+                        <%= form_tag products_path, :method => "get", class: 'form-inline justofy-content-around' do %>
+                            <%= text_field_tag :search, params[:search], class: 'form-control mx-1', placeholder: 'Search' %>
+                            <%= submit_tag "Search", class: 'btn btn-dark', onclick: 'checkDimensions()' %>
+                        <% end %>
+
                     <% end %>
                 </div>
                 <hr>

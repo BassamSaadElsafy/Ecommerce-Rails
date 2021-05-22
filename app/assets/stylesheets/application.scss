@@ -17,6 +17,9 @@
 // @import "bootstrap";
 
 /* User sign in and sign forms. */
+body {
+    min-height: 100vh
+}
 .border-form-div {
     max-width: 600px;
     padding: 19px 29px 29px;
