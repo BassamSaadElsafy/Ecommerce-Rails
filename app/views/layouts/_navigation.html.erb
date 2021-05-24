@@ -19,33 +19,33 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav mr-auto">
                 <li class='nav-item p-1 rounded'>
-                    <%= link_to  welcome_index_path, class: 'nav-link text-white btn-outline-primary rounded' do %>
+                    <%= link_to  welcome_index_path, class: 'nav-link text-white rounded' do %>
                         <i class="fas fa-home text-white"></i>
                         <span>Home</span>
                     <%end%>
                 </li>  
                 <li class='nav-item p-1 rounded'>
-                    <%= link_to products_path, class: 'nav-link text-white btn-outline-info rounded' do %>
+                    <%= link_to products_path, class: 'nav-link text-white rounded' do %>
                         <i class="fas fa-boxes"></i>
                         <span>Products</span>
                     <%end%>
                 </li>  
             <% if current_user %>
                 <li class='nav-item p-1 rounded'>
-                    <%= link_to carts_path, class: 'nav-link text-white btn-outline-warning rounded' do %>
+                    <%= link_to carts_path, class: 'nav-link text-white rounded' do %>
                         <i class="fab fa-opencart"></i>
                         <span>Cart</span>
                     <%end%>
                 </li>
                 <li class='nav-item p-1 rounded'>
-                    <%= link_to orders_path, class: 'nav-link text-white btn-outline-success rounded' do %>
+                    <%= link_to orders_path, class: 'nav-link text-white rounded' do %>
                         <i class="fas fa-shipping-fast"></i>
                         <span>Orders</span>
                     <%end%>
                 </li>
 
                 <li class='nav-item p-1 rounded'>
-                    <%= link_to mywishlist_path, class: 'nav-link text-white btn-outline-success rounded btn-lg' do %>
+                    <%= link_to mywishlist_path, class: 'nav-link text-white rounded' do %>
                         <i class="fas fa-shipping-fast"></i>
                         <span>My Wishlist</span>
                     <%end%>
@@ -53,7 +53,7 @@
 
                 <% if current_user %>
                     <li class='nav-item p-1 rounded'>
-                        <%= link_to store_orders_path, class: 'nav-link text-white btn-outline-primary rounded' do %>
+                        <%= link_to store_orders_path, class: 'nav-link text-white rounded' do %>
                             <i class="fas fa-store-alt"></i>
                             <span>Store</span>
                         <%end%>
@@ -65,24 +65,24 @@
             <% if current_user %>
                  <li class='nav-item p-1 rounded d-none d-md-block'> 
                     <%= link_to welcome_index_path, title: current_user.name do %>                        <% if current_user.avatar.attached?%>
-                        <%image_tag current_user.avatar,size: "50x50" ,class: "rounded-circle" %>
+                        <%image_tag current_user.avatar,size: "35x35" ,class: "rounded-circle" %>
                         <% elsif current_user.superadmin_role? %>
-                            <%image_tag("admin.jpg", size: "50x50",class: "rounded-circle") %>
+                            <%image_tag("admin.jpg", size: "35x35",class: "rounded-circle") %>
                         <%else%>
-                                <%image_tag("noimg.svg", size: "50x50",class: "rounded-circle") %>
+                                <%image_tag("noimg.svg", size: "35x35",class: "rounded-circle") %>
                         <%end%>
                 <% end %>
                 </li>                 
                 <% if current_user.superadmin_role? %>
                         <li class='nav-item p-1 rounded'>
-                            <%= link_to "/admin", class: 'nav-link text-white btn-outline-success rounded' do %>
+                            <%= link_to "/admin", class: 'nav-link text-white rounded' do %>
                                 <i class="fas fa-user-cog"></i>
                                 <span>Dashboard</span>
                             <%end%>
                         </li>                 
                 <% end %>
                     <li class='nav-item p-1 rounded'>
-                        <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-white btn-outline-danger rounded' do %>
+                        <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-white rounded' do %>
                             <i class="fas fa-sign-out-alt"></i>
                             <span>Sign Out</span>
                         <%end%>

@@ -2,7 +2,7 @@
 <div class="container">
 <div class="row justify-content-center">
 <div class="col-9 border p-1 m-5">
-<h1 class="text-center mt-3 m-2 bg-success rounded shadow">My Wishlist</h1>
+<h1 class="text-center mt-3 m-2  rounded ">My Wishlist</h1>
 <hr />
 <div class="m-3">
 <% if ! @wishlist_items.empty? %>
@@ -38,10 +38,10 @@
     </table>
     <% end %>
     <% else %>
-      <table class="table table-sm table-striped shadow rounded text-center">
+      <table class="table table-sm table-striped rounded text-center">
         <thead class="thead-dark">
           <tr>
-            <td colspan="4" class="text-center h5">No Items in Your Wishlist</td>
+            <td colspan="4" class="text-center h5 alert alert-danger">No Items In Your Wishlist</td>
           </tr>
         </thead>
       </table>

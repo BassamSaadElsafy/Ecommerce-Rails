@@ -43,11 +43,7 @@ class OrdersController < ApplicationController
     end
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order, {}).permit(:id,:quantity,:address, :billing)
-    end
-
-    def order_address
-      Address.create(address: params[:address], billing: params[:billing], user_id: current_user.id, order_id: @order.id)
+      params.fetch(:order, {}).permit(:id,:quantity)
     end
 
 end

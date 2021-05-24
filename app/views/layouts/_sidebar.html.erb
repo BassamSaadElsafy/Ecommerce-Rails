@@ -1,10 +1,5 @@
 <aside class="d-md-flex flex-column col-md-3 py-2 d-none" id="sidebar-wrapper">
 
-    
-    <%= form_tag products_path, :method => "get", class: 'form-inline justify-content-around mb-3' do %>
-        <%= text_field_tag :search, params[:search], class: 'form-control mx-2', placeholder: 'Search' %>
-        <%= submit_tag "Search", class: 'btn btn-dark' %>
-    <% end %>
 
     <div class="filter text-center">
 
@@ -13,7 +8,7 @@
         </div>
 
         <div class="category-filter mb-4">
-            <h4 class="bg-info p-1 rounded">Categories</h4>
+            <h4 class="shadow p-1 rounded">Categories</h4>
             <% @categories.each do |category| %>
                 <div>
                     <%= check_box_tag "categories[]", category.id %>
@@ -24,7 +19,7 @@
         <hr>
 
         <div class="brand-filter mb-4">
-            <h4 class="bg-info p-1 rounded">Brands</h4>
+            <h4 class="shadow p-1 rounded">Brands</h4>
             <% @brands.each do |brand| %>
                 <div>
                     <%= check_box_tag "brands[]", brand.id %>
@@ -35,7 +30,7 @@
         <hr>
         
         <div class="store-filter mb-4">
-            <h4 class="bg-info p-1 rounded">Stores</h4>
+            <h4 class="shadow p-1 rounded">Stores</h4>
             <% @stores.each do |store| %>
                 <div>
                     <%= check_box_tag "stores[]", store.id %>
@@ -46,14 +41,14 @@
         <hr>
 
         <div class="price-filter mb-4">
-            <h4 class="bg-info p-1 rounded">Prices</h4>
+            <h4 class="shadow p-1 rounded">Prices</h4>
             <div class="form-group">
                 <%= label_tag 'Min: '%>
                 <%= number_field_tag 'price_min', nil, class: 'form-control d-inline-block' %>
             </div>
             <%= number_field_tag 'price_max', nil, class: 'form-control' %>
         </div>
-        <%= submit_tag "Filter", class: 'btn btn-success shadow w-100', onclick: 'checkDimensions()' %>
+        <%= submit_tag "Filter", class: 'btn btn-dark shadow w-100', onclick: 'checkDimensions()' %>
 
     </div>
 </aside>

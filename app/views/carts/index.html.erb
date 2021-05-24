@@ -2,11 +2,11 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-10 border p-1 m-5">
-      <h1 class="text-center mt-3 m-2 bg-warning rounded shadow">My Cart</h1>
+      <h1 class="text-center mt-3 m-2 rounded ">My Cart</h1>
       <hr />
       <div class="m-3">
         <% if ! @cart.nil? %>
-          <table class="table table-sm table-striped shadow rounded text-center">
+          <table class="table table-sm table-striped  text-center">
             <thead class="thead-dark">
               <tr>
                     <th>Product</th>
@@ -55,18 +55,18 @@
           </tbody>
             </table>
             <hr >
-      <div class="text-center">
-        <%= link_to 'put in Order', edit_order_path(@cart.id), class: 'btn btn-success' %>
+      <div class="row">
+        <%= link_to 'put in Order', edit_order_path(@cart.id), class: 'btn btn-success text-white ml-5' %>
     
         <%= form_with(url: remove_cart_path(@cart.id), method: "delete") do |form| %>
-          <%= form.submit "Remove", :class => 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+          <%= form.submit "Remove", :class => 'btn btn-danger ml-5', data: { confirm: 'Are you sure?' } %>
         <% end %>
     
     </div>
   <% else %>
-    <table class="table table table-striped shadow rounded text-center mb-4">
+    <table class="table table table-striped rounded text-center mb-4">
       <tr>
-        <td colspan="6" class="text-center h4">No Products Found</td>
+        <td colspan="6" class="text-center h4 alert alert-danger">No Products Found!</td>
       </tr>
     </table>
   <% end %>

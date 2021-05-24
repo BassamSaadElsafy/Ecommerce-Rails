@@ -65,7 +65,7 @@ main section.products-index,
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         width: 100%;
-        opacity: 0.3;
+        opacity: 1;
         transition: all 0.3s;
       }
 
@@ -92,16 +92,6 @@ main section.products-index,
         font-size: 0.8em;
       }
 
-
-
-      &:hover {
-
-        border-color: #999;
-
-        footer {
-          opacity: 1.0;
-        }
-      }
 
     }
   

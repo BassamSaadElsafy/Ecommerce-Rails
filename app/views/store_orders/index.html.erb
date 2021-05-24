@@ -1,11 +1,11 @@
 <div class="row justify-content-center">
 <div class="col-9 border p-1 m-5">
-<h1 class="text-center mt-3 m-2 bg-success rounded shadow">Store Orders</h1>
+<h1 class="text-center mt-3 m-2  rounded ">Store Orders</h1>
 <hr />
 <div class="m-3">
     <% if ! @orders.empty? %>
         <% @orders.each do |order| %>
-<table class="table table-sm table-striped shadow rounded text-center">
+<table class="table table-sm table-striped rounded text-center">
             <thead class="thead-dark">
               <tr>
                   <th>Product</th>
@@ -34,12 +34,12 @@
               <td colspan="1" class="text-center h5">
                 <% if order.state == 'pending' %>
                     <%= form_with(url: store_response_path(order.id), method: "put") do |form| %>
-                      <%= form.submit "confirm", :class => 'btn btn-dark shadow' %>
+                      <%= form.submit "confirm", :class => 'btn btn-dark ' %>
                     <% end %>
                 <% else %>
                   <% if order.order.state == 'confirmed' %>
                     <%= form_with(url: store_response_path(order.id), method: "put") do |form| %>
-                      <%= form.submit "deliver", :class => 'btn btn-warning shadow' %>
+                      <%= form.submit "deliver", :class => 'btn btn-warning ' %>
                     <% end %>
                   <% else %>
                     <p>Waiting...</p>
@@ -53,7 +53,7 @@
     <% else %>
       <table class="table table table-striped shadow rounded text-center mb-4">
           <tr>
-            <td colspan="6" class="text-center h4">No Orders</td>
+            <td colspan="6" class="text-center h4 alert alert-danger">There is no order yet!</td>
           </tr>
       </table>
     <% end %>
