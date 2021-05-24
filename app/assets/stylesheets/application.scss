@@ -78,3 +78,45 @@ body {
     color: #468847;
     text-align: left;
  }
+
+ .apple_pagination {
+    background: #f1f1f1;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+    padding: 1em;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .apple_pagination a,
+  .apple_pagination span {
+    padding: 0.2em 0.3em;
+  }
+  .apple_pagination .disabled {
+    color: #aaaaaa;
+  }
+  .apple_pagination .current {
+    font-weight: bold;
+    background-color: #8c96cf;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.8em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;
+  }
+  .apple_pagination a {
+    text-decoration: none;
+    color: black;
+  }
+  .apple_pagination a:hover,
+  .apple_pagination a:focus {
+    background-color: #a0a0a0;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+  }

@@ -10,6 +10,12 @@ class ProductsController < ApplicationController
     def index
         @searched_term = params[:search]
         @products = Product.search(params[:search])
+
+        if current_user
+            @wishlist = Wishlist.where(:user_id => current_user.id)
+        end
+        @wishlist_items = Wishitem.where(:wishlist_id => @wishlist)
+        @products = Product.paginate(page: params[:page], per_page: 9).search(params[:search])
     end
 
     #Get New Product Page
@@ -62,9 +68,13 @@ class ProductsController < ApplicationController
 
     #Delete Product Details
     def destroy
-        @product = Product.find(params[:id])
-        @product.destroy
-        redirect_to products_path
+        if check_orders()
+            @product = Product.find(params[:id])
+            @product.destroy
+            redirect_to products_path
+        else
+            redirect_to products_path, alert: "cannot delete product in order process"
+        end
     end
 
     #Filter Products By Parameters
@@ -102,10 +112,14 @@ class ProductsController < ApplicationController
     
     private
         def product_params
-            params.require(:product).permit(:title, :rate, :description, :price, :quantity, :category_id, :brand_id, :image)
+            params.require(:product).permit(:title, :rate, :description, :price, :quantity, :category_id, :brand_id, :image, :page)
         end
 
         def domain_cache_directory
             Rails.root.join("public", request.domain)
+        end
+        
+        def check_orders
+            (OrderProduct.where(state: "pending", product_id: params[:id]).or(OrderProduct.where(state: "confirmed", product_id: params[:id]))).empty?
         end
 end

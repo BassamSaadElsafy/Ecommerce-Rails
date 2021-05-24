@@ -77,3 +77,4 @@ gem "actionpack-page_caching"
 gem 'faker'
 
 gem 'gravtastic'
+gem 'will_paginate', '~> 3.1.0'

@@ -1,7 +1,7 @@
 class Store < ApplicationRecord
     belongs_to :user
     has_many :products
-    validate :check_remaining
+    # validate :check_remaining
     validates :name, presence: true
     
     after_create do
@@ -9,8 +9,8 @@ class Store < ApplicationRecord
         self.user.save
     end
 
-    def check_remaining #handle that only one user owns one store
-        errors.add(:base, "This user is already own a store")  if self.user.seller_role?
-    end
+    # def check_remaining #handle that only one user owns one store
+    #     errors.add(:base, "This user is already own a store")  if self.user.seller_role?
+    # end
 
 end

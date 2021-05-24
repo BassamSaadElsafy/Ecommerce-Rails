@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   ###############################################################################
 
   ############################# User Routes #####################################
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin' 
   devise_for :users
     devise_scope :user do
       get '/users/sign_out' => 'devise/sessions#destroy'
@@ -51,4 +51,15 @@ Rails.application.routes.draw do
   ###############################################################################
   # root to: "products#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  ############################### Wishlist Routes ###############################
+  get "/my-wishlist", to: 'wishlists#index', as: 'mywishlist'
+  put "/my-wishlist/update", to: 'wishlists#update', as: 'update_mywishlist'
+  post "/my-wishlist/add", to: 'wishlists#create', as: 'add_to_mywishlist'
+  ################################################################################
+
+  ################################### Profile Routes##############################
+  get 'profile/:id', to: 'profiles#show', as: 'profile'
+  ########################################################################
+
 end

@@ -8,10 +8,18 @@ class User < ApplicationRecord
   has_many :orders
   has_many :addresses
   has_one :store
+  has_one :wishlist, dependent: :destroy
   has_one_attached :avatar  
-  after_create :send_admin_mail
-    def send_admin_mail
-      UserMailer.send_welcome_email(self).deliver_later
-    end
+  after_create :send_admin_mail, :create_wishlist
+
+  def send_admin_mail
+    UserMailer.send_welcome_email(self).deliver_later
+  end
+
+  def create_wishlist
+    @wishlist = Wishlist.new
+    @wishlist.user_id = self.id
+    @wishlist.save
+  end
 
 end

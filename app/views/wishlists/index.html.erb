@@ -1,0 +1,52 @@
+<% content_for(:html_title) { 'Ecommerce | My Wishlist' } %>
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-9 border p-1 m-5">
+<h1 class="text-center mt-3 m-2 bg-success rounded shadow">My Wishlist</h1>
+<hr />
+<div class="m-3">
+<% if ! @wishlist_items.empty? %>
+  <% @wishlist_items.each do |item| %>
+    <table class="table table-sm table-striped shadow rounded text-center">
+      <thead class="thead-dark">
+        <tr><th colspan="4" class="text-warning h4">Item #<%= item.id %></th></tr>
+        <tr>
+            <th>Product</th>
+            <th>Image</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="">
+            <td>
+                <%= item.product.title %>
+            </td>
+            <td>
+                <%= (item.product.image.attached?) ? image_tag(item.product.image, size: "120x100") : "No Image" %>
+            </td>
+            <td>
+              <%= item.product.quantity %>
+            </td>
+            <td>
+                <%= form_with(url: update_mywishlist_path("id" => item.product.id), class: 'text-dark', method: "put") do |form| %>
+                    <%= form.submit "Remove", :class => 'fas fa-shopping-cart btn btn-danger', data: { confirm: 'Are you sure?' } %>
+                <% end %>
+            </td>  
+        </tr>
+      </tbody>
+    </table>
+    <% end %>
+    <% else %>
+      <table class="table table-sm table-striped shadow rounded text-center">
+        <thead class="thead-dark">
+          <tr>
+            <td colspan="4" class="text-center h5">No Items in Your Wishlist</td>
+          </tr>
+        </thead>
+      </table>
+    <% end %>
+</div>
+</div>
+</div>
+</div>

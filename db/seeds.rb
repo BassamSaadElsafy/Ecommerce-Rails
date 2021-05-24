@@ -11,7 +11,7 @@ Store.create(
     user_id: 1
 )
 
-25.times do |t|
+100.times do |t|
     Product.create(
         title: Faker::Device.platform,
         price: Faker::Number.decimal(l_digits: 3, r_digits: 2),

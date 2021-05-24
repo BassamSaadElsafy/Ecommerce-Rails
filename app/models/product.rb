@@ -7,6 +7,7 @@ class Product < ApplicationRecord
     has_many :rates
     has_many :order_products
     has_many :reviews
+    has_many :wishlists
     has_many :orders, through: :order_products
     validates :title, presence: true
     validates :price, :quantity, numericality: true

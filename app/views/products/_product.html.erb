@@ -1,22 +1,40 @@
 <article class="product">
   <header>
     <%= link_to product do %>
-        <%= (product.image.attached?) ? image_tag(product.image, size: "200x150", class: 'card-img-top mt-2 border') : 'No image' %>
+       <%= (product.image.attached?) ? image_tag(product.image, size: "200x150", class: 'card-img-top mt-2 border') : image_tag("noprod.svg", size: "200x150") %>
     <% end %>
     <h4><%= product.title %></h4>
   </header>
 
   <footer class="actions">
-    <% if product.quantity > 0 %>
-        <%= form_with(url: add_to_cart_path(product.id), class: 'text-dark', method: "post") do |form| %>
-            <%= form.submit "Add", :class => 'fas fa-shopping-cart btn btn-success', data: { confirm: 'Are you sure?' } %>
-        <% end %>
-    <% else %>
-        <span>Out Of Stock</span>   
+    
+    <% if current_user %>
+
+      <% if product.quantity > 0 && current_user %>
+          <%= form_with(url: add_to_cart_path(product.id), class: 'text-dark', method: "post") do |form| %>
+              <%= form.submit "Add", :class => 'fas fa-shopping-cart btn btn-success', data: { confirm: 'Are you sure?' } %>
+          <% end %>
+      <% else %>
+          <span>Out Of Stock</span>   
+      <% end %>
+
+      <% if @wishlist_items.find{ |item| item[:product_id] == product.id } %>
+          <%= form_with(url: update_mywishlist_path("id" => product.id, "page" => params[:page] || 1), class: 'text-dark', method: "put") do |form| %>
+              <%= form.submit "Remove", :class => 'fas fa-shopping-cart btn btn-danger', data: { confirm: 'Are you sure?' } %>
+          <% end %>        
+      <% else %>
+
+          <%= form_with(url: add_to_mywishlist_path("prod_id" => product.id, "page" => params[:page] || 1), class: 'text-dark', method: "post") do |form| %>
+              <%= form.submit "Add to MyWishlist", :class => 'fas fa-shopping-cart btn btn-warning', data: { confirm: 'Are you sure?' } %>
+          <% end %>
+
+      <% end %>
+
     <% end %>
-    <%= link_to product, class: 'btn btn-default pull-right' do %>
-    Details &raquo;
-    <% end %>
+      <%= link_to product, class: 'btn btn-default pull-right' do %>
+      Details &raquo;
+      <% end %>
+
   </footer>
 
   <aside class="price font-weight-bold">
