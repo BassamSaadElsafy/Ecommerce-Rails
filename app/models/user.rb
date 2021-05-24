@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   validates_presence_of :name # required
   has_many :orders
-  has_many :addresses
   has_one :store
   has_one :wishlist, dependent: :destroy
   has_one_attached :avatar  
