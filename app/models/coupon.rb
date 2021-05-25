@@ -32,27 +32,19 @@ class Copoun < ApplicationRecord
     
     #check if the copoun is expired or not
     def is_expire(count, copoun_obj) 
-    if copoun_obj.expiration_type == "time" 
-    true if copoun_obj.expiration_time < Date.today
-    else
-    true if copoun_obj.expiration_number < count
-    end
+        if copoun_obj.expiration_type == "time" 
+            true if copoun_obj.expiration_time < Date.today
+        else
+            true if copoun_obj.expiration_number < count
+        end
     end
     
     #the deduction of the order
     def deduction(price, copoun_obj) 
-    if copoun_obj.deduction_type == "percentage"
-    total_price = price * (copoun_obj.deduction_percentage / 100)
-    else
-    total_price = price - copoun_obj.deduction_amount
+        if copoun_obj.deduction_type == "percentage"
+            total_price = price * (copoun_obj.deduction_percentage / 100)
+        else
+            total_price = price - copoun_obj.deduction_amount
+        end
     end
-    end
-    
-    #check if the user use the copoun once
-    before_save :check_user
-    
-    private
-    def check_user
-    flash[:alert] = "User not found." if self.user?
-    end
-   end
+end

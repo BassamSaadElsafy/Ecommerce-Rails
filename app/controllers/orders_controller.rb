@@ -37,13 +37,48 @@ class OrdersController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
     end
+
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order, {}).permit(:id,:quantity)
+      params.fetch(:order, {}).permit(:id,:quantity, :coupon)
     end
 
+
+    #Check Quantity of Product
+    def check_quantity
+      @orderprod.each do |ordprod|
+        if ordprod.product.quantity < ordprod.quantity
+          return ordprod.product.title
+        end
+      end
+      return false
+    end
+
+    #Check Coupon is Valid or Not
+    def check_coupon
+      @coupon = Coupon.find_by(code: params[:coupon])
+      if !@coupon.nil?
+        if !@coupon.is_expire(@coupon)
+          @coupon.deduction(get_total(@order.id), @coupon)
+        else
+          false
+        end
+      else
+        true
+      end
+    end
+
+    #Total Price of Order
+    def get_total(order_id)
+      @ordprod = OrderProduct.where(order_id: order_id)
+      tot_price = 0
+      @ordprod.each do |ordprod|
+        tot_price += ordprod.quantity*ordprod.product.price
+      end
+    end
 end

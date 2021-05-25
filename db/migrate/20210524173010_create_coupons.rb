@@ -10,7 +10,6 @@ class CreateCoupons < ActiveRecord::Migration[5.2]
             t.integer :deduction_amount
             t.references :user, null: true, foreign_key: true
             t.references :product, null: true, foreign_key: true
-            
             t.timestamps
         end
     end

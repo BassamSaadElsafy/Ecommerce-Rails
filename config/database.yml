@@ -4,20 +4,28 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
+# default: &default
+#   adapter: mysql2
+#   database: ecommerce_development
+#   host: 127.0.0.1
+#   encoding: utf8mb4
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: root
+#   password: 
+#   port: 3305
+#   socket: /opt/lampp/var/mysql/mysql.sock #(for linux)
+
 default: &default
-  adapter: mysql2
-  database: ecommerce_development
-  host: 127.0.0.1
-  encoding: utf8mb4
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: 
-  port: 3305
-  socket: /opt/lampp/var/mysql/mysql.sock #(for linux)
 
 development:
   <<: *default
   database: ecommerce_development
+
   
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

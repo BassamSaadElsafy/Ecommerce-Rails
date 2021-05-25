@@ -105,7 +105,7 @@
         <% @reviews.each do |review| %>
           <blockquote class="speech-bubble shadow"><%= review.comment %></p>
                     <cite class="p-1"><b><%= link_to profile_path(review.user.id), :class => 'text-decoration-none text-dark' do %><%= review.user.name %><% end %></b></cite>
-                    <% if review.user_id == current_user.id%>
+                    <% if review.user_id == current_user.id?%>
                           <%= form_with(url: delete_comment_path(:review_id => review.id), method: "delete") do |form| %>
                             <%= form.submit "delete", :class => 'btn btn-outline-info shadow' %>
                           <% end %>

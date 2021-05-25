@@ -38,7 +38,7 @@
           <hr >
           <div class="text-center h5 p-2 m-3 ">
             <%= form_with(url: order_path(@order.id), method: "put") do |form| %>
-              
+              <p><%= form.label :coupon %> <%= form.text_field :coupon %></p>
               <%= form.submit "CheckOut", :class => 'btn btn-primary' %>
             <% end %>
           </div>
