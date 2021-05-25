@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order, {}).permit(:id,:quantity, :coupon)
+      params.fetch(:order, {}).permit(:id,:quantity)
     end
 
 
@@ -57,20 +57,6 @@ class OrdersController < ApplicationController
         end
       end
       return false
-    end
-
-    #Check Coupon is Valid or Not
-    def check_coupon
-      @coupon = Coupon.find_by(code: params[:coupon])
-      if !@coupon.nil?
-        if !@coupon.is_expire(@coupon)
-          @coupon.deduction(get_total(@order.id), @coupon)
-        else
-          false
-        end
-      else
-        true
-      end
     end
 
     #Total Price of Order

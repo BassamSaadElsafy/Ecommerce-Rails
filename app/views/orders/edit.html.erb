@@ -1,3 +1,5 @@
+<% content_for :title, "Confirm Order" %>
+
 <div class="container">
 <div class="row justify-content-center">
     <div class="col-md-10 border p-1 m-5">
@@ -38,16 +40,12 @@
           <hr >
           <div class="text-center h5 p-2 m-3 ">
             <%= form_with(url: order_path(@order.id), method: "put") do |form| %>
-              <p><%= form.label :coupon %> <%= form.text_field :coupon %></p>
               <%= form.submit "CheckOut", :class => 'btn btn-primary' %>
             <% end %>
           </div>
         <% end %>
       </div>
-      <div class="text-center mt-5 mb-1">
-        <%= link_to 'Order', orders_path , class: 'btn btn-success text-white' %> 
-        <%= link_to 'Back', carts_path , class: 'btn btn-dark text-white' %>
-      </div>
+      
     </div>
   </div> 
 </div>

@@ -1,7 +1,7 @@
-<article class="product">
+<article class="product" style="width: 100%;">
   <header>
     <%= link_to product do %>
-       <%= (product.image.attached?) ? image_tag(product.image, size: "200x150", class: 'card-img-top mt-2 border') : image_tag("noimg.png", size: "200x150") %>
+       <%= (product.image.attached?) ? image_tag(product.image, size: "200x150", class: 'card-img-top mt-2') : image_tag("noimg.png", size: "200x150") %>
     <% end %>
     <h5 class="mb-4 text-center"><%= product.title %></h5>
   </header>

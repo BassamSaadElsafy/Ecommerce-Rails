@@ -1,6 +1,8 @@
+<% content_for :title, "Register" %>
+
 <%= devise_error_messages! %>
 <div class="border-form-div text-center">
-  <h2 class="bg-danger text-white shadow rounded mb-4 p-1">Sign up</h2>
+  <h2 class="text-dark font-weight-bold rounded mb-4 p-1">Sign up</h2>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
     <%= f.text_field :name, :autofocus => true, :placeholder => 'Full Name' %>
     <%= f.email_field :email, :placeholder => 'Email address' %>
@@ -8,7 +10,7 @@
     <%= f.password_field :password_confirmation, :placeholder => 'Password confirmation' %>
     <%= f.file_field :avatar, :placeholder => 'Avatar'%>
     <hr>
-    <%= f.submit "Sign up",:class=>'btn btn-danger mb-2' %>
+    <%= f.submit "Sign up",:class=>'btn btn-outline-dark mb-2' %>
   <% end %>
   <p>already registered?
   <%= render "devise/shared/links" %></p>

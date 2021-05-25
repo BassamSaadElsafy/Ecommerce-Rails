@@ -1,9 +1,11 @@
+<% content_for :title, "Eshtry" %>
+
 <div class="p-4 text-center text-white">
   <% if user_signed_in? %>
     <% if current_user.superadmin_role? %>
         <h1 class="text-center rounded mb-3">Welcome, Admin!</h1>
       <% else %>
-        <h1 class="text-center rounded mb-3">Welcome back, <%= current_user.name %></h1>
+        <h1 class="text-center rounded mb-3">Welcome, <%= current_user.name %></h1>
     <% end %>
     <br>
     <p class="lead"> Enjoy The App!</p>
