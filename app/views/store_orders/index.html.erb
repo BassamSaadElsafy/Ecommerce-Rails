@@ -1,3 +1,5 @@
+<% content_for :title, "Store" %>
+
 <div class="row justify-content-center">
 <div class="col-9 border p-1 m-5">
 <h1 class="text-center mt-3 m-2  rounded ">Store Orders</h1>
@@ -24,14 +26,13 @@
               <td><%= order.product.quantity %></td>
             </tr>
             <tr>
-              <td colspan="2" class="bg-dark text-center text-white h6">Order Address</td>
               <td colspan="2" class="bg-dark text-center text-white h6">State</td>
-              <td colspan="1" class="bg-dark text-center text-white h6">Action</td>
+              <td colspan="3" class="bg-dark text-center text-white h6">Action</td>
             </tr>
             <tr class="table-dark text-dark">
               <%# <td colspan="2"><%= order.addresses.address %></td>
               <td colspan="2" class="text-center h5"><%= order.state %></td>
-              <td colspan="1" class="text-center h5">
+              <td colspan="3" class="text-center h5">
                 <% if order.state == 'pending' %>
                     <%= form_with(url: store_response_path(order.id), method: "put") do |form| %>
                       <%= form.submit "confirm", :class => 'btn btn-dark ' %>

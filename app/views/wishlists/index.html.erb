@@ -1,15 +1,15 @@
-<% content_for(:html_title) { 'Ecommerce | My Wishlist' } %>
+<% content_for :title, "Wishlist" %>
 <div class="container">
 <div class="row justify-content-center">
-<div class="col-9 border p-1 m-5">
-<h1 class="text-center mt-3 m-2  rounded ">My Wishlist</h1>
-<hr />
-<div class="m-3">
+<div class="col-12 p-1 m-1">
+<h3 class="text-center mt-1 m-2  rounded text-success font-weight-bold ">My Wishlist</h3>
+
+<div class="m-1">
 <% if ! @wishlist_items.empty? %>
   <% @wishlist_items.each do |item| %>
     <table class="table table-sm table-striped shadow rounded text-center">
       <thead class="thead-dark">
-        <tr><th colspan="4" class="text-warning h4">Item #<%= item.id %></th></tr>
+        <tr><th colspan="4" class="text-warning h4">Product #<%= item.id %></th></tr>
         <tr>
             <th>Product</th>
             <th>Image</th>
@@ -30,7 +30,7 @@
             </td>
             <td>
                 <%= form_with(url: update_mywishlist_path("id" => item.product.id), class: 'text-dark', method: "put") do |form| %>
-                    <%= form.submit "Remove", :class => 'fas fa-shopping-cart btn btn-danger', data: { confirm: 'Are you sure?' } %>
+                    <%= form.submit "Remove", :class => 'fas fa-shopping-cart btn btn-outline-danger btn-sm', data: { confirm: 'Are you sure?' } %>
                 <% end %>
             </td>  
         </tr>

@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RailsEcommerce</title>
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="cTkCetfEX6NhyFhO2gH4jnGGjd96uQoVsqwJc08FsJRCvadDgzzMIEZMWsSsalKVlxK9ZpnVDIS82nTSppobUA==" />
+<meta name="csrf-token" content="CRmvJit68zASUdaqZMvLdTqvgvHcLhTGsekR/VkNEOzG6ibnrX5gTxLJRBSgSgNts41E+K4hPMlWSTt9cjfxdQ==" />
     
     <link rel="stylesheet" media="all" href="/assets/carts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/forms.self-a28a42568dc8edf3d81f1f2e337e8f889b9250646021cd6d1a3d4abf47fc221b.css?body=1" data-turbolinks-track="reload" />
@@ -14,13 +14,14 @@
 <link rel="stylesheet" media="all" href="/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/scaffolds.self-e353d43f7c08f5180770e19889d7f5dc0671f8c2347b1c221b8425361e5c2510.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/store_orders.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
-<link rel="stylesheet" media="all" href="/assets/welcome.self-ab1981667faade341705459af39894c97f50d14b8bdd417d14d7e4739eccf83c.css?body=1" data-turbolinks-track="reload" />
-<link rel="stylesheet" media="all" href="/assets/application.self-05cbb8b583421aecbae5234f9d07fe75c4e7434c6fd06923cc1598103de51727.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/welcome.self-4337b85fb8b32eb2e1e3be937641e1bd5aa3ba38c2478cb640a56c9937814b34.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/application.self-cdf730a61c5a7b6d9ec364e1899041d3c64799d393137dabf182dbad7564ff70.css?body=1" data-turbolinks-track="reload" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself">
+  
   </head>
   <body class="d-flex flex-column justify-content-between">
     <header class="">
@@ -30,7 +31,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
             <span class="d-md-none m-2">
-                <a title="Admin" href="/welcome/index"><img class="rounded-circle" src="/assets/admin-260036c45566317acbfb56731d50a8fa957a221fa6b48ed59ec8b47e5c2d9f3c.jpg" width="50" height="50" /></a>            </span>
+                <a title="buyer" href="/welcome/index"><img class="rounded-circle" src="/assets/avatar-5356caf8e6825140d3a91d424a5872a61f9ffad408bf30463a4f9790e63a115f.svg" width="50" height="50" /></a>            </span>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav mr-auto">
                 <li class='nav-item p-1 rounded'>
@@ -60,41 +61,30 @@
                         <span>My Wishlist</span>
 </a>                </li>
 
-                    <li class='nav-item p-1 rounded'>
-                        <a class="nav-link text-white rounded" href="/store.orders">
-                            <i class="fas fa-store-alt"></i>
-                            <span>Store</span>
-</a>                    </li>
             </ul>
             <ul class="nav navbar-nav ml-auto">
                  <li class='nav-item p-1 rounded d-none d-md-block'> 
-                    <a title="Admin" href="/welcome/index"><img class="rounded-circle" src="/assets/admin-260036c45566317acbfb56731d50a8fa957a221fa6b48ed59ec8b47e5c2d9f3c.jpg" width="35" height="35" /></a>                </li>                 
-                        <li class='nav-item p-1 rounded'>
-                            <a class="nav-link text-white rounded" href="/admin">
-                                <i class="fas fa-user-cog"></i>
-                                <span>Dashboard</span>
-</a>                        </li>                 
+                    <a title="buyer" href="/profile/5"><img class="rounded-circle" src="/assets/default-dc571bca73334092b4c6c2800cb6076294ae7a12b253b805f500ccd6e9761363.jpg" width="35" height="35" /></a>                </li>                 
                     <li class='nav-item p-1 rounded'>
                         <a class="nav-link text-white rounded" rel="nofollow" data-method="delete" href="/users/sign_out">
-                            <i class="fas fa-sign-out-alt"></i>
                             <span>Sign Out</span>
 </a>                    </li>
             </ul>
         </div>
     </div>
 </nav>
-       
+      
     </header>
     <div class="container-fluid">
-      <div class="row justify-content-center text-center border shadow m-4 p-4">
-  <h1 class="col-md-11 bg-dark rounded p-2 shadow text-white">Product details</h1>
+      <div class="row justify-content-center text-center  shadow m-4 p-4">
+  <h1 class="col-md-11  p-2 text-black font-weight-bold">Product details</h1>
   <div class="col-md-5 ml-2 m-2 p-2">
       <img class="img-fluid" src="/assets/noimg-88b386578d416cb030df2521d4d24f2cbd00855cedf04b3f084b4b196ab43dcd.png" />
     <div class="p-2 text-center">
 
-          <form action="/add.to.cart/2" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="lnnfwlHdu4I8o6xF8v8+LxjF5mz2wHLU++msSXAnWuNSPUtj9195N60O9Eg3oFcItw39QwYqKYAXG/LMWL5hmg==" />
+          <form action="/add.to.cart/2" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="a49aWcRTY6JVCWa9UdlYzCuDtP1GDEtBzDQcpZlfsFi5UD8WDqiCEEW+tuAZDo8zMD5LwrB7o0QaA8+vxD6XQg==" />
             <div class="col-md-8 text-center d-inline-flex">
-              <input value="1" min="1" max="16" class="form-control d-inline-flex mr-3" type="number" name="quantity" id="quantity" />
+              <input value="1" min="1" max="32" class="form-control d-inline-flex mr-3" type="number" name="quantity" id="quantity" />
               <input type="submit" name="commit" value="Add to Cart" class="btn btn btn-warning text-dark shadow" data-disable-with="Add to Cart" />
             </div>
 </form>
@@ -103,24 +93,23 @@
   </div>
   <div class="col-md-5 bg ml-2 m-2">
     <br>
-    <h1 class="mt-5">Danger OS</h1>
+    <h3 class="mt-5 font-weight-bold">Firefox OS</h3>
     <hr>
-    <p><b>Price:</b> 780.25 | <b>AvailableQuantity:</b> 16</p>
-    <p><b>Store:</b> HP</p>
-    <p><b>Category:</b> iOS | <b>Brand:</b> Xiamomi</p>
+    <p><b>Price:</b> 406.13 | <b>AvailableQuantity:</b> 32</p>
+    <p><b>Store:</b> Samsung</p>
+    <p><b>Category:</b> Windows 10 | <b>Brand:</b> HP</p>
     <hr>
     <h5><b>Product Description</b></h5>
-    <p class="border rounded mt-3 p-1 mb-3">We need to navigate the open-source SQL alarm!</p>
+    <p class="rounded mt-3 p-1 mb-3">If we program the transmitter, we can get to the THX system through the 1080p SAS system!</p>
     <div class="text-center">
-        <a class="btn btn-primary shadow" href="/products/2/edit">Edit</a>
     </div>
   </div>
 </div>
-  <div class="row justify-content-center text-center border shadow m-4 p-4">
-    <h3 class="col-md-11 bg-dark rounded p-2 shadow mb-3 text-white">Your Review</h3>
+  <div class="row justify-content-center text-center  shadow m-4 p-4">
+    <h3 class="col-md-11  p-2 mb-3 text-success font-weight-bold">Your Rate</h3>
     <div class="col-md-5 align-self-center">
-      <div class="rounded p-2 m-1 text-center border rounded">
-        <form action="/rate.product/2" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="cZEDw8oPGuEfTGtvApH08qF4wYLollmOUXqtqBj1PRv89Kr/VE6jRARBXf88b6Ff0zcPKDPy5X8I6FNSWnw7JA==" />
+      <div class="rounded p-2 m-1 text-center shadow rounded">
+        <form action="/rate.product/2" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="bdZpcrRe0YXb5ffP31PkBF8aGzD2v9fu9BXpnAt994qY/TnprQLoqk0uF/DXHAkhSBgPKawL9rK2E2h6TAQFqg==" />
           <div class="rate text-center">
             <input type="radio" id="star5" name="rate" value="5" onclick="form.submit()"/>
             <label for="star5" title="excellent">5 stars</label>
@@ -133,24 +122,22 @@
             <input type="radio" id="star1" name="rate" value="1" onclick="form.submit()"/>
             <label for="star1" title="bad">1 star</label>
           </div>
-</form>        <p class="mt-2"><b>Your Rate: </b>5.0</p>
+</form>        <p class="mt-2"><b>Your Rate: </b>2.0</p>
       </div>
     </div>
-    <div class="col-md-5 align-self-center">
-      <div class="rounded p-2 m-1 text-center">
-          <form action="/comment.product/2" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="Z3WVsKYuHSaErtcdwIswcGklRPn4n4MWVJgsloZ2zHRoJuUSROn9gPIquWLSitoZCtcVr5RneiKJQdYXPRpSmw==" />
-            <textarea class="form-control" name="comment" id="comment">
-</textarea>
-            <hr>
-            <input type="submit" name="commit" value="review" class="btn btn-outline-info shadow" data-disable-with="review" />
-</form>    </div>
+   
   </div>
-</div>
-<div class="row justify-content-center text-center border shadow m-4 p-4">
-  <h3 class="col-md-11 bg-dark rounded p-2 shadow text-white">Reviews</h3>
+  </div>
+<div class="row justify-content-center text-center m-4 p-4">
+  <h3 class="col-md-12 rounded p-2 shadow text-success font-weight-bold">Reviews</h3>
   <div class="col-md-10 ml-2 m-1 p-2">
     <div class="p-3 m-2 text-center">
-      <div class="mb-2 border">No Reviews</div>
+          <blockquote class="shadow">test comment</p>
+                    <cite class="p-1"><b><a class="text-decoration-none text-dark" href="/profile/5">buyer</a></b></cite>
+                          <form action="/comment.product/2/delete-comment?review_id=2" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="delete" /><input type="hidden" name="authenticity_token" value="7zbFVawI8upT+pCmSPEgq/Ae7d/tuLR/3hXwBqHoumsauGfaRdxj1C0S23PGluXY80Xna+T6eQWHE6qjNbT0HA==" />
+                          <input type="submit" name="commit" value="delete" class="btn btn-info shadow" data-disable-with="delete" />
+</form>           </blockquote>
+        <hr>
 </div>
 </div>
     </div>

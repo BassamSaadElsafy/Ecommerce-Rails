@@ -1,7 +1,9 @@
-<div class="products-page container-fluid">
+<% content_for :title, "Products" %>
+
+<div class="products-page">
     <div class="row">
         <%= render 'layouts/sidebar'%>
-        <div class="main-content col-md-9">
+        <div class="main-content col-md-10">
             <div class="container">
                 <div class="d-flex flex-wrap justify-content-center mt-5">
                     <span class="px-2 py-1 align-self-center mr-3 d-md-none btn btn-outline-primary" onclick="showSidebar()">
@@ -9,9 +11,12 @@
                     </span>                    
                     <% if current_user %>
 
+                    <% if current_user.seller_role? %>
+                        
                         <div class="mr-3 align-self-center">
-                            <%= link_to "Add Product", new_product_path, class: 'd-inline btn btn-primary text-white' %>
+                            <%= link_to "Add Product", new_product_path, class: 'd-inline btn btn-outline-success text-dark' %>
                         </div>
+                    <% end %>
 
                         <%= form_tag products_path, :method => "get", class: 'form-inline justofy-content-around' do %>
                             <%= text_field_tag :search, params[:search], class: 'form-control mx-1', placeholder: 'Search' %>
@@ -20,7 +25,6 @@
 
                     <% end %>
                 </div>
-                <hr>
                 <div class="products mb-5">
                     <%= render @products %>
                 </div>

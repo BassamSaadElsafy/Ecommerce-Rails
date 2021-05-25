@@ -4,9 +4,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RailsEcommerce</title>
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="iq1XlEGmlitsc5jBxb4RUkn6XZRE5KmJvvtcqwF0VFJrLMvqTZlg/MSnqVbEhvEXxAiDcoL0lgCkhunsQM5dTQ==" />
-    
-    <link rel="stylesheet" media="all" href="/assets/carts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
+<meta name="csrf-token" content="iq1XlEGmlitsc5jBxb4RUkn6XZRE5KmJvvtcqwF0VFJrLMvqTZlg/MSnqVbEhvEXxAiDcoL0lgCkhunsQM5dTQ==" />  
+<link rel="stylesheet" media="all" href="/assets/carts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/forms.self-a28a42568dc8edf3d81f1f2e337e8f889b9250646021cd6d1a3d4abf47fc221b.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/orders.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/product_details.self-5932638505a4d70d717c63d44a022c65008f4228308f3c15e6ae0717087c85fa.css?body=1" data-turbolinks-track="reload" />
@@ -14,13 +13,14 @@
 <link rel="stylesheet" media="all" href="/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/scaffolds.self-e353d43f7c08f5180770e19889d7f5dc0671f8c2347b1c221b8425361e5c2510.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/store_orders.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
-<link rel="stylesheet" media="all" href="/assets/welcome.self-ab1981667faade341705459af39894c97f50d14b8bdd417d14d7e4739eccf83c.css?body=1" data-turbolinks-track="reload" />
-<link rel="stylesheet" media="all" href="/assets/application.self-05cbb8b583421aecbae5234f9d07fe75c4e7434c6fd06923cc1598103de51727.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/welcome.self-4337b85fb8b32eb2e1e3be937641e1bd5aa3ba38c2478cb640a56c9937814b34.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/application.self-cdf730a61c5a7b6d9ec364e1899041d3c64799d393137dabf182dbad7564ff70.css?body=1" data-turbolinks-track="reload" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself">
+  
   </head>
   <body class="d-flex flex-column justify-content-between">
     <header class="">
@@ -30,7 +30,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
             <span class="d-md-none m-2">
-                <a title="Admin" href="/welcome/index"><img class="rounded-circle" src="/assets/admin-260036c45566317acbfb56731d50a8fa957a221fa6b48ed59ec8b47e5c2d9f3c.jpg" width="50" height="50" /></a>            </span>
+                <a title="buyer" href="/welcome/index"><img class="rounded-circle" src="/assets/avatar-5356caf8e6825140d3a91d424a5872a61f9ffad408bf30463a4f9790e63a115f.svg" width="50" height="50" /></a>            </span>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav mr-auto">
                 <li class='nav-item p-1 rounded'>
@@ -60,41 +60,36 @@
                         <span>My Wishlist</span>
 </a>                </li>
 
-                    <li class='nav-item p-1 rounded'>
-                        <a class="nav-link text-white rounded" href="/store.orders">
-                            <i class="fas fa-store-alt"></i>
-                            <span>Store</span>
-</a>                    </li>
             </ul>
             <ul class="nav navbar-nav ml-auto">
                  <li class='nav-item p-1 rounded d-none d-md-block'> 
-                    <a title="Admin" href="/welcome/index"><img class="rounded-circle" src="/assets/admin-260036c45566317acbfb56731d50a8fa957a221fa6b48ed59ec8b47e5c2d9f3c.jpg" width="35" height="35" /></a>                </li>                 
-                        <li class='nav-item p-1 rounded'>
-                            <a class="nav-link text-white rounded" href="/admin">
-                                <i class="fas fa-user-cog"></i>
-                                <span>Dashboard</span>
-</a>                        </li>                 
+                    <a title="buyer" href="/profile/5"><img class="rounded-circle" src="/assets/default-dc571bca73334092b4c6c2800cb6076294ae7a12b253b805f500ccd6e9761363.jpg" width="35" height="35" /></a>                </li>                 
                     <li class='nav-item p-1 rounded'>
                         <a class="nav-link text-white rounded" rel="nofollow" data-method="delete" href="/users/sign_out">
-                            <i class="fas fa-sign-out-alt"></i>
                             <span>Sign Out</span>
 </a>                    </li>
             </ul>
         </div>
     </div>
 </nav>
-       
+      
     </header>
     <div class="container-fluid">
-      <div class="row justify-content-center text-center border shadow m-4 p-4">
-  <h1 class="col-md-11 bg-dark rounded p-2 shadow text-white">Product details</h1>
+      <div class="row justify-content-center text-center  shadow m-4 p-4">
+  <h1 class="col-md-11  p-2 text-black font-weight-bold">Product details</h1>
   <div class="col-md-5 ml-2 m-2 p-2">
       <img class="img-fluid" src="/assets/noimg-88b386578d416cb030df2521d4d24f2cbd00855cedf04b3f084b4b196ab43dcd.png" />
     <div class="p-2 text-center">
 
+<<<<<<< HEAD
           <form action="/add.to.cart/1" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="j1IzvgvxYP4dYMVmCa/J6KAY2lnymf8n3uKISOmnxlMPdBij2A9GO15C9S9gm4YI0XEkmQBIlrk8ieW0aFPmnA==" />
             <div class="col-md-8 text-center d-inline-flex">
               <input value="1" min="1" max="19" class="form-control d-inline-flex mr-3" type="number" name="quantity" id="quantity" />
+=======
+          <form action="/add.to.cart/1" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="Gg01hstgNmYdzAG3+8APE0odLzzk5+d9lLg6u4e9I2RKgr5ej9WF+vhyBG1yRKMdKVYocIQikDs80YCbpt5LRQ==" />
+            <div class="col-md-8 text-center d-inline-flex">
+              <input value="1" min="1" max="29" class="form-control d-inline-flex mr-3" type="number" name="quantity" id="quantity" />
+>>>>>>> a00fce1eab840b35a162e57e5eab4e9b17780059
               <input type="submit" name="commit" value="Add to Cart" class="btn btn btn-warning text-dark shadow" data-disable-with="Add to Cart" />
             </div>
 </form>
@@ -103,6 +98,7 @@
   </div>
   <div class="col-md-5 bg ml-2 m-2">
     <br>
+<<<<<<< HEAD
     <h1 class="mt-5">Android OS</h1>
     <hr>
     <p><b>Price:</b> 453.76 | <b>AvailableQuantity:</b> 19</p>
@@ -111,16 +107,30 @@
     <hr>
     <h5><b>Product Description</b></h5>
     <p class="border rounded mt-3 p-1 mb-3">Overriding the bandwidth won&#39;t do anything, we need to connect the wireless scsi alarm!</p>
+=======
+    <h3 class="mt-5 font-weight-bold">webOS</h3>
+    <hr>
+    <p><b>Price:</b> 903.03 | <b>AvailableQuantity:</b> 29</p>
+    <p><b>Store:</b> Samsung</p>
+    <p><b>Category:</b> Windows 10 | <b>Brand:</b> Samsung</p>
+    <hr>
+    <h5><b>Product Description</b></h5>
+    <p class="rounded mt-3 p-1 mb-3">If we index the panel, we can get to the JBOD hard drive through the virtual EXE protocol!</p>
+>>>>>>> a00fce1eab840b35a162e57e5eab4e9b17780059
     <div class="text-center">
-        <a class="btn btn-primary shadow" href="/products/1/edit">Edit</a>
     </div>
   </div>
 </div>
-  <div class="row justify-content-center text-center border shadow m-4 p-4">
-    <h3 class="col-md-11 bg-dark rounded p-2 shadow mb-3 text-white">Your Review</h3>
+  <div class="row justify-content-center text-center  shadow m-4 p-4">
+    <h3 class="col-md-11  p-2 mb-3 text-success font-weight-bold">Your Rate</h3>
     <div class="col-md-5 align-self-center">
+<<<<<<< HEAD
       <div class="rounded p-2 m-1 text-center border rounded">
         <form action="/rate.product/1" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="MpfC6DCn8i01aO5Nwyee9DbwUWwHY8uOf2g2WKrjdX1Uk/muvUsJc5Kuz3HbhtOa2k666DAdTnrMertqcORkrw==" />
+=======
+      <div class="rounded p-2 m-1 text-center shadow rounded">
+        <form action="/rate.product/1" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="wW0kn/viz5B3xk6SqzDhfw1uLD1/2ZP1GDLcNifwBce3aBqQ4PntzVW+oXmlsscylLblSQ9gxCP2imPTkXO29Q==" />
+>>>>>>> a00fce1eab840b35a162e57e5eab4e9b17780059
           <div class="rate text-center">
             <input type="radio" id="star5" name="rate" value="5" onclick="form.submit()"/>
             <label for="star5" title="excellent">5 stars</label>
@@ -133,6 +143,7 @@
             <input type="radio" id="star1" name="rate" value="1" onclick="form.submit()"/>
             <label for="star1" title="bad">1 star</label>
           </div>
+<<<<<<< HEAD
 </form>        <p class="mt-2"><b>Your Rate: </b>2.0</p>
       </div>
     </div>
@@ -142,17 +153,29 @@
           <cite class="p-1 text-success"><b>Admin</b></cite>
         </blockquote>
     </div>
+=======
+</form>        <p class="mt-2"><b>Your Rate: </b>N/A</p>
+      </div>
+    </div>
+   
+>>>>>>> a00fce1eab840b35a162e57e5eab4e9b17780059
   </div>
-</div>
-<div class="row justify-content-center text-center border shadow m-4 p-4">
-  <h3 class="col-md-11 bg-dark rounded p-2 shadow text-white">Reviews</h3>
+  </div>
+<div class="row justify-content-center text-center m-4 p-4">
+  <h3 class="col-md-12 rounded p-2 shadow text-success font-weight-bold">Reviews</h3>
   <div class="col-md-10 ml-2 m-1 p-2">
     <div class="p-3 m-2 text-center">
+<<<<<<< HEAD
           <blockquote class="speech-bubble shadow">You can&#39;t program the application without calculating the redundant XML program!</p>
                     <cite class="p-1"><b><a class="text-decoration-none text-dark" href="/profile/1">Admin</a></b></cite>
                           <form action="/comment.product/1/delete-comment?review_id=1" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="delete" /><input type="hidden" name="authenticity_token" value="hkLGjLKoML2PyAzuN++n/LwoQ0CmnQvomDOIJFo4Jldvz+3UiRS2jt1xb5o9olI/4BYpPbJ1g/ZniS8rOSP5FA==" />
                           <input type="submit" name="commit" value="delete" class="btn btn-outline-info shadow" data-disable-with="delete" />
 </form>           </blockquote>
+=======
+          <blockquote class="shadow">We need to reboot the virtual SDD pixel!</p>
+                    <cite class="p-1"><b><a class="text-decoration-none text-dark" href="/profile/1">Admin</a></b></cite>
+           </blockquote>
+>>>>>>> a00fce1eab840b35a162e57e5eab4e9b17780059
         <hr>
 </div>
 </div>

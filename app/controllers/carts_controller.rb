@@ -6,8 +6,10 @@ class CartsController < ApplicationController
 
     def create
       if Product.find(params[:id]).quantity == 0
-        redirect_to products_path, alert: 'Cannot add it, no available items for your order'
-      else
+        redirect_to products_path, alert: 'Cannot add it, no available items for your order' 
+      elsif Product.find(params[:id]).quantity < (params[:quantity]).to_i
+        redirect_to request.referer, alert: 'Cannot add it, there is no enough quantity in stock!!' 
+      else 
         @order = Order.find_by(user_id: current_user.id, state: "inCart")
         if @order.nil?
           @order =Order.create(user_id: current_user.id, state: "inCart")
