@@ -2,25 +2,27 @@
 <html>
   <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RailsEcommerce</title>
+    <title>Product Details</title>
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="TkOXIFec7y05e3CWBzhRtH/WDpaWNyEPWBSq+o3rvig4kA5EyRr+1T77EfZn2jeGfdgFC9OgDQurbsSxzwnzkg==" />
+<meta name="csrf-token" content="rryJl/cr13zJGJjdFAjBkulW2GQDy0i23DUJ7BFpFjEBvxSQ+8Jjk97z5c5c3I3YNC6jKHpDJFbIGpZLAoXoWg==" />
     
     <link rel="stylesheet" media="all" href="/assets/carts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/forms.self-a28a42568dc8edf3d81f1f2e337e8f889b9250646021cd6d1a3d4abf47fc221b.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/orders.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/product_details.self-5932638505a4d70d717c63d44a022c65008f4228308f3c15e6ae0717087c85fa.css?body=1" data-turbolinks-track="reload" />
-<link rel="stylesheet" media="all" href="/assets/products.self-bc9c3e1a33b0e0bd84774d82e2a9728a033de15f747a923ffb6d2c6ff16d4122.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/products.self-48bcb80c1995f1a6811d0bddb6cdbc4aea008c81ef401023b43ea0adb733ccd8.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/scaffolds.self-e353d43f7c08f5180770e19889d7f5dc0671f8c2347b1c221b8425361e5c2510.css?body=1" data-turbolinks-track="reload" />
 <link rel="stylesheet" media="all" href="/assets/store_orders.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
-<link rel="stylesheet" media="all" href="/assets/welcome.self-ab1981667faade341705459af39894c97f50d14b8bdd417d14d7e4739eccf83c.css?body=1" data-turbolinks-track="reload" />
-<link rel="stylesheet" media="all" href="/assets/application.self-05cbb8b583421aecbae5234f9d07fe75c4e7434c6fd06923cc1598103de51727.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/welcome.self-4337b85fb8b32eb2e1e3be937641e1bd5aa3ba38c2478cb640a56c9937814b34.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/application.self-cdf730a61c5a7b6d9ec364e1899041d3c64799d393137dabf182dbad7564ff70.css?body=1" data-turbolinks-track="reload" />
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself">
+  
   </head>
   <body class="d-flex flex-column justify-content-between">
     <header class="">
@@ -68,7 +70,7 @@
             </ul>
             <ul class="nav navbar-nav ml-auto">
                  <li class='nav-item p-1 rounded d-none d-md-block'> 
-                    <a title="Admin" href="/welcome/index"><img class="rounded-circle" src="/assets/admin-260036c45566317acbfb56731d50a8fa957a221fa6b48ed59ec8b47e5c2d9f3c.jpg" width="35" height="35" /></a>                </li>                 
+                    <a title="Admin" href="/profile/1"><img class="rounded-circle" src="/assets/admin-260036c45566317acbfb56731d50a8fa957a221fa6b48ed59ec8b47e5c2d9f3c.jpg" width="35" height="35" /></a>                </li>                 
                         <li class='nav-item p-1 rounded'>
                             <a class="nav-link text-white rounded" href="/admin">
                                 <i class="fas fa-user-cog"></i>
@@ -76,50 +78,73 @@
 </a>                        </li>                 
                     <li class='nav-item p-1 rounded'>
                         <a class="nav-link text-white rounded" rel="nofollow" data-method="delete" href="/users/sign_out">
-                            <i class="fas fa-sign-out-alt"></i>
                             <span>Sign Out</span>
 </a>                    </li>
             </ul>
         </div>
     </div>
 </nav>
-       
+      
     </header>
     <div class="container-fluid">
-      <div class="row justify-content-center text-center border shadow m-4 p-4">
-  <h1 class="col-md-11 bg-dark rounded p-2 shadow text-white">Product details</h1>
+      <div class="row justify-content-center text-center  shadow m-4 p-4">
+  <h1 class="col-md-11  p-2 text-black font-weight-bold">Product details</h1>
   <div class="col-md-5 ml-2 m-2 p-2">
-      <img class="img-fluid" src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc279c5f5d11d949b5614990e728caee2d3518f8/avatar.jpg" />
+      <img class="img-fluid" src="/assets/noimg-88b386578d416cb030df2521d4d24f2cbd00855cedf04b3f084b4b196ab43dcd.png" />
     <div class="p-2 text-center">
-          <form action="/add.to.cart/101" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="FymQJY9O1m25pMiRO/lwUBmWWbEM5D+R/A2BHNMhJqQyaW9H4VDCY1LyAK67X14w53qMBfpE6sHeo2VDUHKedQ==" />
+
+          <form action="/add.to.cart/101" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="NL0DhuUVmIjAC1bR8jdi/1GbrT2U91kvZXdzc8fu3zzPOTlkAmRaXr9Gtm6JTSPkCxFCAcc1Pl3lrZbUCCywKA==" />
             <div class="col-md-8 text-center d-inline-flex">
-              <input value="1" min="1" max="853" class="form-control d-inline-flex mr-3" type="number" name="quantity" id="quantity" />
+              <input value="1" min="1" max="503" class="form-control d-inline-flex mr-3" type="number" name="quantity" id="quantity" />
               <input type="submit" name="commit" value="Add to Cart" class="btn btn btn-warning text-dark shadow" data-disable-with="Add to Cart" />
             </div>
-</form>    </div>
+</form>
+
+    </div>
   </div>
   <div class="col-md-5 bg ml-2 m-2">
     <br>
-    <h1 class="mt-5">Tempor nisi autem it</h1>
+    <h3 class="mt-5 font-weight-bold">Sed voluptates et od</h3>
     <hr>
-    <p><b>Rate:</b> 0 | <b>Reviewers:</b> 0</p>
-    <p><b>Price:</b> 44.0 | <b>AvailableQuantity:</b> 853</p>
-    <p><b>Store:</b> ASUS</p>
-    <p><b>Category:</b> Firefox OS | <b>Brand:</b> Xiamomi</p>
+    <p><b>Price:</b> 22.0 | <b>AvailableQuantity:</b> 503</p>
+    <p><b>Store:</b> Huawei</p>
+    <p><b>Category:</b> Windows 10 | <b>Brand:</b> OnePlus</p>
     <hr>
     <h5><b>Product Description</b></h5>
-    <p class="border rounded mt-3 p-1 mb-3">Laboriosam dolor in</p>
+    <p class="rounded mt-3 p-1 mb-3">Quibusdam dolores at</p>
     <div class="text-center">
         <a class="btn btn-primary shadow" href="/products/101/edit">Edit</a>
     </div>
   </div>
 </div>
-<div class="row justify-content-center text-center border shadow m-4 p-4">
-  <h3 class="col-md-11 bg-dark rounded p-2 shadow text-white">Reviews</h3>
+  <div class="row justify-content-center text-center  shadow m-4 p-4">
+    <h3 class="col-md-11  p-2 mb-3 text-success font-weight-bold">Your Rate</h3>
+    <div class="col-md-5 align-self-center">
+      <div class="rounded p-2 m-1 text-center shadow rounded">
+        <form action="/rate.product/101" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="4uCw8GYFKNlqr8Yg+hOYtNsfK1mWE8rjDYgshlyYj6a2sx1oXBpH98Sdg7Jen6r3IT+XGI6kpU48YUNLpGHkOw==" />
+          <div class="rate text-center">
+            <input type="radio" id="star5" name="rate" value="5" onclick="form.submit()"/>
+            <label for="star5" title="excellent">5 stars</label>
+            <input type="radio" id="star4" name="rate" value="4" onclick="form.submit()"/>
+            <label for="star4" title="very good">4 stars</label>
+            <input type="radio" id="star3" name="rate" value="3" onclick="form.submit()"/>
+            <label for="star3" title="good">3 stars</label>
+            <input type="radio" id="star2" name="rate" value="2" onclick="form.submit()"/>
+            <label for="star2" title="poor">2 stars</label>
+            <input type="radio" id="star1" name="rate" value="1" onclick="form.submit()"/>
+            <label for="star1" title="bad">1 star</label>
+          </div>
+</form>        <p class="mt-2"><b>Your Rate: </b>N/A</p>
+      </div>
+    </div>
+   
+  </div>
+  </div>
+<div class="row justify-content-center text-center m-4 p-4">
+  <h3 class="col-md-12 rounded p-2 shadow text-success font-weight-bold">Reviews</h3>
   <div class="col-md-10 ml-2 m-1 p-2">
     <div class="p-3 m-2 text-center">
       <div class="mb-2 border">No Reviews</div>
-  </div>
 </div>
 </div>
     </div>

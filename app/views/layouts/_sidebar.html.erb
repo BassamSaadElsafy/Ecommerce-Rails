@@ -1,4 +1,4 @@
-<aside class="d-md-flex flex-column col-md-3 py-2 d-none shadow" id="sidebar-wrapper">
+<aside class="d-md-flex flex-column col-md-2 py-2 d-none text-white" id="sidebar-wrapper" style="background-color: #343a40">
 
     <%# Filter %>
     <div class="filter">
@@ -7,7 +7,8 @@
         </div>
         <%= form_tag fetch_products_path ,method: 'get', :remote => true, id: 'category-form' do %>
             <div class="category-filter mb-4 mt-3">
-                <h4 class="bg-info p-1 rounded">Categories</h4>
+                <h4 class="p-1 rounded font-weight-bold">Categories</h4>
+                <hr style="background-color: white">
                 <% @categories.each do |category| %>
                     <div>
                         <%= check_box_tag "categories[]", category.id %>
@@ -15,9 +16,10 @@
                     </div>
                 <%end%>
             </div>
-            <hr>
+            
             <div class="brand-filter mb-4">
-                <h4 class="bg-info p-1 rounded">Brands</h4>
+                <h4 class="font-weight-bold p-1 rounded">Brands</h4>
+                <hr style="background-color: white">
                 <% @brands.each do |brand| %>
                     <div>
                         <%= check_box_tag "brands[]", brand.id %>
@@ -25,9 +27,9 @@
                     </div>
                 <%end%>
             </div>
-            <hr>
             <div class="store-filter mb-4">
-                <h4 class="bg-info p-1 rounded">Stores</h4>
+                <h4 class="font-weight-bold p-1 rounded">Stores</h4>
+                <hr style="background-color: white">
                 <% @stores.each do |store| %>
                     <div>
                         <%= check_box_tag "stores[]", store.id %>
@@ -35,9 +37,9 @@
                     </div>
                 <%end%>
             </div>
-            <hr>
             <div class="price-filter mb-4">
-                <h4 class="bg-info p-1 rounded">Prices</h4>
+                <h4 class="font-weight-bold p-1 rounded">Prices</h4>
+                <hr style="background-color: white">
                 <div class="form-group">
                     <%= label_tag 'Min: '%>
                     <%= number_field_tag 'price_min', nil, class: 'form-control d-inline-block' %>
@@ -46,7 +48,7 @@
                 <%= label_tag 'Max: '%>
                 <%= number_field_tag 'price_max', nil, class: 'form-control' %>
             </div>
-            <%= submit_tag "Filter", class: 'btn btn-success shadow w-100', onclick: 'checkDimensions()' %>
+            <%= submit_tag "Filter", class: 'btn btn-dark btn-sm w-100', onclick: 'checkDimensions()' %>
         <% end %>
 
     </div>

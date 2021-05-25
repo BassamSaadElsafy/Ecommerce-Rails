@@ -3,7 +3,7 @@ require 'test_helper'
 class ProductTest < ActionDispatch::IntegrationTest
     
     test "should not create product without required" do
-        product = Product.create 
+        product = Product.create
         assert_not product.save
     end
     

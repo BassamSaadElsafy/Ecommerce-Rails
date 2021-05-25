@@ -56,9 +56,6 @@ class StoreOrdersController < ApplicationController
             @orders = OrderProduct.where(order_id: @order.order_id)
             if @orders.where(state: @order.order.state).empty?
                 Order.find(@order.order_id).update(state: stat)
-                if stat == "delivered"
-                    Address.find_by(order_id: @order.order_id).destroy
-                end
             end
         end
 end

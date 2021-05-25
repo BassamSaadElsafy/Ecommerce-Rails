@@ -1,48 +1,43 @@
-<div class="m-2 p-3 border">
-  <%= form_with scope: :product, url: products_path, local: true do |form| %>
-    <p>
-      <%= form.label :title %><br>
-      <%= form.text_field :title %>
-    </p>
+<% content_for :title, "Add Product" %>
 
-    <p>
-      <%= form.label :description %><br>
-      <%= form.text_area :description %>
-    </p>
+<div>
+  <div class="row flex-column align-items-center">
+    <div class="m-2 p-3 border shadow col-md-6">
+      <h4 class="text-center mb-5 font-weight-bold">Add Product</h4>
 
-    <p>
-      <%= form.label :price %><br>
-      <%= form.number_field :price, step: :any %>
-    </p>
+        <%= form_with scope: :product, url: products_path, local: true do |form| %>
+          <div class="form-group">
+            <%= form.label :title %><br>
+            <%= form.text_field :title, class: 'form-control mb-2' %>
+          <div>
+          <div class="form-group">
+            <%= form.label :description %><br>
+            <%= form.text_area :description, class: 'form-control mb-2' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :price %><br>
+            <%= form.number_field :price, step: :any, class: 'form-control mb-2' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :quantity %><br>
+            <%= form.number_field :quantity, class: 'form-control mb-2' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :category %><br>
+            <%= form.collection_select :category_id, Category.all, :id, :name, {}, {class: 'custom-select mb-2'} %>
+          </div>
+          <div class="form-group">
+            <%= form.label :brand %><br>
+            <%= form.collection_select :brand_id, Brand.all, :id, :name, {}, {class: 'custom-select mb-2'} %>
+          </div>
+          <div class="custom-file">
+            <%= form.file_field :image, class: 'custom-file-input' %>
+            <%= form.label "Choose image", class: 'custom-file-label' %><br>
+          </div> 
+          <%= form.submit 'Add Product', class: 'btn btn-dark mt-3 ' %>
 
-    <p>
-      <%= form.label :quantity %><br>
-      <%= form.number_field :quantity %>
-    </p>
+        <% end %>
 
-    <p>
-      <%= form.label :category %><br>
-      <%= form.collection_select(:category_id, Category.all, :id, :name) %>
-    </p>
-
-    <p>
-      <%= form.label :brand %><br>
-      <%= form.collection_select(:brand_id, Brand.all, :id, :name) %>
-    </p>
-
-    <p>
-      <%= form.label :store %><br>
-      <%= form.collection_select(:store_id, Store.all, :id, :name) %>
-    </p>
-    
-    <p>
-      <%= form.label :image %><br>
-      <%= form.file_field :image %>
-    </p>
-
-    <p>
-      <%= form.submit %>
-    </p>
-  <% end %>
-</div>
-<%= link_to "Back to Products", products_path %>
+      </div>
+  </div>
+ </div>
