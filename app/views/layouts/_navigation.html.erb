@@ -51,7 +51,7 @@
                     <%end%>
                 </li>
 
-                <% if current_user %>
+                <% if current_user.seller_role? %>
                     <li class='nav-item p-1 rounded'>
                         <%= link_to store_orders_path, class: 'nav-link text-white rounded' do %>
                             <i class="fas fa-store-alt"></i>
@@ -64,12 +64,12 @@
             <ul class="nav navbar-nav ml-auto">
             <% if current_user %>
                  <li class='nav-item p-1 rounded d-none d-md-block'> 
-                    <%= link_to welcome_index_path, title: current_user.name do %>                        <% if current_user.avatar.attached?%>
+                    <%= link_to profile_path( current_user.id ), title: current_user.name do %>                        <% if current_user.avatar.attached?%>
                         <%image_tag current_user.avatar,size: "35x35" ,class: "rounded-circle" %>
                         <% elsif current_user.superadmin_role? %>
                             <%image_tag("admin.jpg", size: "35x35",class: "rounded-circle") %>
                         <%else%>
-                                <%image_tag("noimg.svg", size: "35x35",class: "rounded-circle") %>
+                            <%image_tag("default.jpg", size: "35x35",class: "rounded-circle") %>
                         <%end%>
                 <% end %>
                 </li>                 
@@ -83,19 +83,18 @@
                 <% end %>
                     <li class='nav-item p-1 rounded'>
                         <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-white rounded' do %>
-                            <i class="fas fa-sign-out-alt"></i>
                             <span>Sign Out</span>
                         <%end%>
                     </li>
                 <%else%>
                 <li class='nav-item p-1 rounded'>
-                    <%= link_to new_user_registration_path, class: 'nav-link text-white btn-outline-primary rounded' do %>
+                    <%= link_to new_user_registration_path, class: 'nav-link text-white rounded' do %>
                         <i class="fas fa-user-plus"></i>
                         <span>Sign Up</span>
                     <%end%>
                 </li>
                 <li class='nav-item p-1 rounded'>
-                    <%= link_to new_user_session_path, class: 'nav-link text-white btn-outline-primary rounded' do %>
+                    <%= link_to new_user_session_path, class: 'nav-link text-white rounded' do %>
                         <i class="fas fa-sign-in-alt"></i>
                         <span>Sign In</span>
                     <%end%>

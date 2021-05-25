@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
             @wishlist = Wishlist.where(:user_id => current_user.id)
         end
         @wishlist_items = Wishitem.where(:wishlist_id => @wishlist)
-        @products = Product.paginate(page: params[:page], per_page: 9).search(params[:search])
+        @products = Product.paginate(page: params[:page], per_page: 12).search(params[:search])
     end
 
     #Get New Product Page

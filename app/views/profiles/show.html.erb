@@ -1,13 +1,12 @@
 <% content_for(:html_title) { 'My Profile' } %>
-<div class="container">
+<div class="container" style="max-height: 50%">
   <div class="row flex-column align-items-center">
     <div class="m-3 p-4 text-center border shadow col-md-6">
-        <h2 class="text-center mb-5 bg-dark text-white rounded"><%= @user.name %></h2>
+        <h2 class="text-center mb-5 text-black font-weight-bold"><%= current_user.name %></h2>
+        <%= (@user.avatar.attached?) ? image_tag(@user.avatr, size: "200x200", class: 'card-img-top mt-2 border rounded-circle') : image_tag("default.jpg", size: "140x140", class: 'card-img-top mt-2 border rounded-circle') %>
         <hr>
-        <%= (@user.avatar.attached?) ? image_tag(@user.avatr, size: "500*500", class: 'card-img-top mt-2 border rounded-circle') : image_tag("avatar.svg", size: "500*500", class: 'card-img-top mt-2 border rounded-circle') %>
-        <hr>
-        <h4><b>Number of Orders: </b><%= @user.get_orders(@user) %></h4>
-        <h4><b>User E-mail: </b><%= @user.email %></h4>
+        <h4><b>Number of orders: </b><%= current_user.orders.count %></h4>
+        <h4><b>User e-mail: </b><%= current_user.email %></h4>
     </div>
   </div>
 </div>
