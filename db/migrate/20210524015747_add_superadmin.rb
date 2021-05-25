@@ -5,6 +5,8 @@ class AddSuperadmin < ActiveRecord::Migration[5.2]
             u.password  = '123456'
             u.superadmin_role = true
             u.name = 'Admin'
+            # u.skip_confirmation!
+            # u.save!
         end
     end
 end
