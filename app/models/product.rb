@@ -14,15 +14,16 @@ class Product < ApplicationRecord
     validates :description, :price, :quantity, :category_id, :brand_id, presence: true
     
     def self.search(search)
-        if search
+        if search.nil? || search.empty? 
+            @products = self.all  
+        else
             products = self.where("lower(title) LIKE lower(?) or lower(description) LIKE(?)", "%#{search}%", "%#{search}%")
+
             if products.exists?
                 products
             else
                 @products = []
             end
-        else
-            @products = self.all
         end
     end
 
@@ -43,6 +44,10 @@ class Product < ApplicationRecord
                 products = self.where(store_id: store.id)
             end
         end
+    end
+
+    def self.filter_by_price(filter1, filter2)
+        products = self.where('price Between ? AND ?', filter1, filter2)
     end
 
     def check_order(prod, id)

@@ -13,11 +13,7 @@ class ReviewsController < ApplicationController
 
     def comment
         @product = Product.find(params[:id]) 
-        if @product.check_order(@product, current_user.id)
-            if Review.where(user_id: current_user.id, product_id: params[:id]).empty?
-                Review.create(user_id: current_user.id, product_id: params[:id], comment: params[:comment])
-            end
-        end
+        Review.create(user_id: current_user.id, product_id: params[:id], comment: params[:comment])
         redirect_to request.referrer
     end
 
@@ -25,9 +21,14 @@ class ReviewsController < ApplicationController
         Rate.find_by(user_id: current_user.id, product_id: params[:id]).update(rate: params[:rate].to_f)
     end
 
-    private
-    def rate_params
-        params.require(:product).permit(:rate, :comment)
+    def destroy
+        @review = Review.find(params[:review_id])
+        @review.destroy
+        redirect_to request.referrer
     end
 
+    private
+        def rate_params
+            params.require(:product).permit(:rate, :comment)
+        end
 end

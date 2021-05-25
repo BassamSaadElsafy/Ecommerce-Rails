@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   ############################## Reviews Routes #################################
   post "rate.product/:id" => 'reviews#rate', as: 'rate_product'
   post "comment.product/:id" => 'reviews#comment', as: 'comment_product'
+  delete "comment.product/:id/delete-comment" => 'reviews#destroy', as: 'delete_comment'
   ###############################################################################
 
   ############################# Product API Routes ##############################

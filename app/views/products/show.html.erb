@@ -3,8 +3,9 @@
 <div class="row justify-content-center text-center border shadow m-4 p-4">
   <h1 class="col-md-11 bg-dark rounded p-2 shadow text-white">Product details</h1>
   <div class="col-md-5 ml-2 m-2 p-2">
-      <%= (@product.image.attached?) ? image_tag(@product.image, size: "400*420", class: 'img-fluid') : image_tag("noprod.svg", size: "400*420", class: 'img-fluid') %>
+      <%= (@product.image.attached?) ? image_tag(@product.image, size: "400*420", class: 'img-fluid') : image_tag("noimg.png", size: "400*420", class: 'img-fluid') %>
     <div class="p-2 text-center">
+
       <%# ADD TO CART %>
       <% if @product.quantity > 0 %>
         <% if current_user %>
@@ -21,10 +22,13 @@
             <% else %>
               <%= link_to "Add To Cart", new_user_session_path, :class => "btn btn-warning text-dark" %> 
             <% end %>
+
         <% end %>
+
       <% else %>
         <h4 class="border p-2 rounded text-danger">Out of stock</h4>
       <% end %>
+
       <%# END ADD TO CART %>
     </div>
   </div>
@@ -32,7 +36,6 @@
     <br>
     <h1 class="mt-5"><%= @product.title %></h1>
     <hr>
-    <p><b>Rate:</b> <%= @rate.product_rate(@product) %> | <b>Reviewers:</b> <%= @rate.reviewers(@product) %></p>
     <p><b>Price:</b> <%= @product.price %> | <b>AvailableQuantity:</b> <%= @product.quantity %></p>
     <p><b>Store:</b> <%= @product.store.name %></p>
     <p><b>Category:</b> <%= @product.category.name %> | <b>Brand:</b> <%= @product.brand.name %></p>
@@ -47,7 +50,7 @@
   </div>
 </div>
 <%# END PRODUCT %>
-<% if current_user && current_user.id != @product.store.user_id && @product.check_order(@product, current_user.id) %>
+<% if current_user %>
   <%# REVIEWS %>
   <div class="row justify-content-center text-center border shadow m-4 p-4">
     <h3 class="col-md-11 bg-dark rounded p-2 shadow mb-3 text-white">Your Review</h3>
@@ -102,12 +105,16 @@
         <% @reviews.each do |review| %>
           <blockquote class="speech-bubble shadow"><%= review.comment %></p>
                     <cite class="p-1"><b><%= link_to profile_path(review.user.id), :class => 'text-decoration-none text-dark' do %><%= review.user.name %><% end %></b></cite>
+                    <% if review.user_id == current_user.id%>
+                          <%= form_with(url: delete_comment_path(:review_id => review.id), method: "delete") do |form| %>
+                            <%= form.submit "delete", :class => 'btn btn-outline-info shadow' %>
+                          <% end %>
+                    <%end%>
            </blockquote>
         <hr>
       <% end %>
     <% else %>
       <div class="mb-2 border">No Reviews</div>
     <% end %>
-  </div>
 </div>
 </div>

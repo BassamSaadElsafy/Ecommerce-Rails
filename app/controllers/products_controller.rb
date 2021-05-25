@@ -5,12 +5,13 @@ class ProductsController < ApplicationController
     before_action :filter_parameters
     self.page_cache_directory = :domain_cache_directory
     caches_page :show
-    
+
+    @@searched_item = nil
+
     #Get all Products or #Filtared Product
     def index
-        @searched_term = params[:search]
+        @@searched_term = params[:search]
         @products = Product.search(params[:search])
-
         if current_user
             @wishlist = Wishlist.where(:user_id => current_user.id)
         end
@@ -26,8 +27,6 @@ class ProductsController < ApplicationController
     def create
         @product = Product.new(product_params)
         @product.store_id = current_user.store.id
-        # @product.store_id = current_user.store.id
-    
         if @product.save
             redirect_to @product
         else
@@ -59,10 +58,8 @@ class ProductsController < ApplicationController
 
     def rate
         @product = Product.find(params[:id])
-
         @product.update(reviewers: (@product.reviewers+1) )
         @product.update(rate: ((@product.rate + params[:rate].to_i)/2))
-
         redirect_to @product
     end
 
@@ -86,12 +83,8 @@ class ProductsController < ApplicationController
 
     #Filter Products By Price
     def filter_products
-        
-        unless @searched_term.nil? || @searched_term.empty?
-            @products = Product.search(@searched_term)
-        end
-
-        if params[:categories].present? || params[:brands].present? || params[:stores].present?
+        if params[:categories].present? || params[:brands].present? || params[:stores].present? || params[:price_min].present? || params[:price_max].present?
+            @products = Product.search(@@searched_item)
             if params[:categories].present?
                 @products = (@products.nil?) ? Product.where(category_id: params[:categories]) : @products.where(category_id: params[:categories])
             end
@@ -102,11 +95,25 @@ class ProductsController < ApplicationController
             if params[:stores].present?
                 @products = (@products.nil?) ? Product.where(store_id: params[:stores]) : @products.where(store_id: params[:stores])
             end
+            if params[:price_min].present?
+                @products = (@products.nil?) ? Product.where("price >= ?", params[:price_min]) : @products.where("price >= ?", params[:price_min])
+            end
+            if params[:price_max].present?
+                @products = (@products.nil?) ? Product.where("price <= ?", params[:price_max]) : @products.where("price <= ?", params[:price_max])
+            end
+            @filtered = true
+            @products
         else
-            @products = Product.all
+            @filtered = false
+            @products = Product.search(@@searched_item).page params[:page]
         end
+        @products = @products.paginate(page: params[:page]).search(params[:search])
+        if current_user
+            @wishlist = Wishlist.where(:user_id => current_user.id)
+        end
+        @wishlist_items = Wishitem.where(:wishlist_id => @wishlist)
         respond_to do |format|
-            format.js
+            format.html { render :index}
         end
     end
     

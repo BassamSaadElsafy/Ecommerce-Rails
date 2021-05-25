@@ -5,7 +5,6 @@ class CartsController < ApplicationController
     end
 
     def create
-      puts "hello world"
       if Product.find(params[:id]).quantity == 0
         redirect_to products_path, alert: 'Cannot add it, no available items for your order'
       else
