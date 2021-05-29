@@ -11,7 +11,7 @@ This is a team project that features an ecommerce website with different roles (
 * As admin, you have all permisions in the system.
 
 ### Team Members:
-	 Ahmed Mahmoud - Bassam saad - Kaled elgaml - Hossam Salah - Mohamed egila
+	 Ahmed Mahmoud - Bassam saad - Hossam Salah - Kaled elgaml - Islam Shaaban - Mohamed egila
 
 ### Prerequisites
 

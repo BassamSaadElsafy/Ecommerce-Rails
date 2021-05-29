@@ -89,19 +89,22 @@
       <% if !@reviews.empty? %>
         <% @reviews.each do |review| %>
           <blockquote class="shadow"><%= review.comment %></p>
-                    <cite class="p-1"><b><%= link_to profile_path(review.user.id), :class => 'text-decoration-none text-dark' do %><%= review.user.name %><% end %></b></cite>
-                    <% if user_signed_in? %>
+                      <b class="p-1"><%= review.user.name %></b>                    <% if user_signed_in? %>
                       <% if review.user_id == current_user.id%>
                           <%= form_with(url: delete_comment_path(:review_id => review.id), method: "delete") do |form| %>
                           <%= form.submit "delete", :class => 'btn btn-info shadow' %>
-                      <%end %>
-                    <%end%>
-                    <%end%>
+                      <% end %>
+                    <% end %>
+                    <% end %>
            </blockquote>
         <hr>
       <% end %>
     <% else %>
       <div class="mb-2 border">No Reviews</div>
     <% end %>
+    <%= form_with(url: comment_product_path(), method: "post") do |form| %>
+      <%= form.text_field :comment, class: 'form-control mb-2' %>
+      <%= form.submit "Comment", :class => 'btn btn-info shadow' %>
+    <%end %>
 </div>
 </div>
