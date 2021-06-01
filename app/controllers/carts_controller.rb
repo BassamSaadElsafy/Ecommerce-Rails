@@ -15,7 +15,6 @@ class CartsController < ApplicationController
           @order =Order.create(user_id: current_user.id, state: "inCart")
         end
         update(@order, params[:id], params[:quantity])
-        redirect_to request.referrer, notice: 'Cart Changed successfully'
       end
     end
 
@@ -55,14 +54,21 @@ class CartsController < ApplicationController
 
         def orderprod (ord_id, prd_id, quantity = 1)
           @orderprod = OrderProduct.find_by(order_id: ord_id, product_id: prd_id)
+          @product = Product.find(prd_id)
           if @orderprod.nil?
-            @product = Product.find(prd_id)
             Order.find(ord_id).products << @product
             @orderprod = OrderProduct.find_by(order_id: ord_id, product_id: prd_id)
             @orderprod.update(store_id: @product.store.id, state: "inCart", quantity: quantity)
+            redirect_to request.referrer, notice: 'Cart Changed successfully'
           elsif @orderprod.quantity > 0
             unless @orderprod.quantity == 1 && quantity == -1
-              @orderprod.update(quantity: @orderprod.quantity+quantity)
+              if @product.quantity <= @orderprod.quantity && quantity != -1
+                redirect_to request.referer, alert: 'Cannot add it, there is no enough quantity in stock!!' 
+              else
+                @orderprod.update(quantity: @orderprod.quantity+quantity)
+                redirect_to request.referrer, notice: 'Cart Changed successfully'
+
+              end
             else
               @orderprod.destroy
             end
