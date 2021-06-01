@@ -3,7 +3,7 @@
 <%= devise_error_messages! %>
 <div class="border-form-div text-center">
   <h2 class="text-dark font-weight-bold rounded mb-4 p-1">Sign up</h2>
-  <% if params[:seller].present? %>
+  
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
     <%= f.text_field :name, :autofocus => true, :placeholder => 'Full Name' %>
     <%= f.email_field :email, :placeholder => 'Email address' %>
@@ -11,19 +11,10 @@
     <%= f.password_field :password_confirmation, :placeholder => 'Password confirmation' %>
     <%= f.file_field :avatar, :placeholder => 'Avatar'%>
     <hr>
-    <%= f.submit "Sign up",:class=>'btn btn-outline-dark mb-2' %>
+    <%= f.submit "Sign up As Seller",value: 'seller', name: 'seller',:class=>'btn btn-outline-dark mb-2' %>
+    <%= f.submit "Sign up As Buyer",value: 'buyer', name: 'buyer',:class=>'btn btn-outline-dark mb-2' %>
   <% end %>
-  <% else %>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-      <%= f.text_field :name, :autofocus => true, :placeholder => 'Full Name' %>
-      <%= f.email_field :email, :placeholder => 'Email address' %>
-      <%= f.password_field :password, :placeholder => 'Password' %>
-      <%= f.password_field :password_confirmation, :placeholder => 'Password confirmation' %>
-      <%= f.file_field :avatar, :placeholder => 'Avatar'%>
-      <hr>
-      <%= f.submit "Sign up",:class=>'btn btn-outline-dark mb-2' %>
-    <% end %>
-  <% end %>
+  
   <p>already registered?
   <%= render "devise/shared/links" %></p>
 </div>
