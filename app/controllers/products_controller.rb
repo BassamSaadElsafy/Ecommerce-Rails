@@ -6,11 +6,8 @@ class ProductsController < ApplicationController
     self.page_cache_directory = :domain_cache_directory
     caches_page :show
 
-    @@searched_item = nil
-
     #Get all Products or #Filtared Product
     def index
-        @@searched_term = params[:search]
         @products = Product.search(params[:search])
         if current_user
             @wishlist = Wishlist.where(:user_id => current_user.id)
@@ -84,12 +81,10 @@ class ProductsController < ApplicationController
     #Filter Products By Price
     def filter_products
         if params[:categories].present? || params[:brands].present? || params[:stores].present? || params[:price_min].present? || params[:price_max].present?
-            @products = Product.search(@@searched_item)
             if params[:categories].present?
                 @products = (@products.nil?) ? Product.where(category_id: params[:categories]) : @products.where(category_id: params[:categories])
             end
             if params[:brands].present?
-                puts "brands = #{@brands}"
                 @products = (@products.nil?) ? Product.where(brand_id: params[:brands]) : @products.where(brand_id: params[:brands])
             end   
             if params[:stores].present?
@@ -101,11 +96,9 @@ class ProductsController < ApplicationController
             if params[:price_max].present?
                 @products = (@products.nil?) ? Product.where("price <= ?", params[:price_max]) : @products.where("price <= ?", params[:price_max])
             end
-            @filtered = true
             @products
         else
-            @filtered = false
-            @products = Product.search(@@searched_item).page params[:page]
+            @products = Product.all.page params[:page]
         end
         @products = @products.paginate(page: params[:page]).search(params[:search])
         if current_user

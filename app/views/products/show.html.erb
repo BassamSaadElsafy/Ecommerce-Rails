@@ -5,7 +5,6 @@
   <div class="col-md-5 ml-2 m-2 p-2">
       <%= (@product.image.attached?) ? image_tag(@product.image, size: "400*420", class: 'img-fluid') : image_tag("noimg.png", size: "400*420", class: 'img-fluid') %>
     <div class="p-2 text-center">
-
       <%# ADD TO CART %>
       <% if @product.quantity > 0 %>
         <% if current_user %>
@@ -72,7 +71,17 @@
             <label for="star1" title="bad">1 star</label>
           </div>
         <% end %>
-        <p class="mt-2"><b>Your Rate: </b><% if !@rate.check_rate(@product, current_user.id) %><%= @rate.get_rate(@product, current_user.id) %><% else %>N/A<% end %></p>
+          <p class="mt-2"><b> Product Rate: </b>
+            <%= @rate.product_rate(@product) %>
+          </p>
+        <% if !@rate.check_rate(@product, current_user.id) %>
+          <p class="mt-2"><b> Your Rate: </b>
+            <%= @rate.get_rate(@product, current_user.id) %>
+          </p>
+        <% else %>
+        <p class="mt-2"><b> Your Rate: </b>
+            N/A
+        <% end %>
         <%# END RATE %>
       </div>
     </div>
@@ -102,9 +111,11 @@
     <% else %>
       <div class="mb-2 border">No Reviews</div>
     <% end %>
-    <%= form_with(url: comment_product_path(), method: "post") do |form| %>
-      <%= form.text_field :comment, class: 'form-control mb-2' %>
-      <%= form.submit "Comment", :class => 'btn btn-info shadow' %>
-    <%end %>
+    <% if current_user %>
+      <%= form_with(url: comment_product_path(), method: "post") do |form| %>
+        <%= form.text_field :comment, class: 'form-control mb-2' %>
+        <%= form.submit "Comment", :class => 'btn btn-info shadow' %>
+      <%end %>
+    <% end %>
 </div>
 </div>

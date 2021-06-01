@@ -1,12 +1,10 @@
 class ReviewsController < ApplicationController
 
     def rate
-        if !(Rate.new).check_rate(Product.find(params[:id]), current_user.id)
+        if Rate.find_by(:product_id => params[:id], :user_id => current_user.id)
             rate_update()
         else
-            if Rate.where(user_id: current_user.id, product_id: params[:id]).empty?
-                Rate.create(user_id: current_user.id, product_id: params[:id], rate: params[:rate].to_f)
-            end
+            Rate.create(user_id: current_user.id, product_id: params[:id], rate: params[:rate].to_f)
         end
         redirect_to request.referrer
     end
@@ -26,9 +24,4 @@ class ReviewsController < ApplicationController
         @review.destroy
         redirect_to request.referrer
     end
-
-    private
-        def rate_params
-            params.require(:product).permit(:rate, :comment)
-        end
 end

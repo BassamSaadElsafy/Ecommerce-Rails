@@ -55,7 +55,6 @@ class CartsController < ApplicationController
 
         def orderprod (ord_id, prd_id, quantity = 1)
           @orderprod = OrderProduct.find_by(order_id: ord_id, product_id: prd_id)
-      
           if @orderprod.nil?
             @product = Product.find(prd_id)
             Order.find(ord_id).products << @product
@@ -64,6 +63,8 @@ class CartsController < ApplicationController
           elsif @orderprod.quantity > 0
             unless @orderprod.quantity == 1 && quantity == -1
               @orderprod.update(quantity: @orderprod.quantity+quantity)
+            else
+              @orderprod.destroy
             end
           end
         end

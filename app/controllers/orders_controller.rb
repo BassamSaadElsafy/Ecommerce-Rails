@@ -20,8 +20,6 @@ class OrdersController < ApplicationController
     end
     if @order.update(state: "pending")
       redirect_to orders_path, notice: 'put in Order'
-    else
-      redirect_to request.referrer, alert: 'Form inputs not valid please check them'
     end
   end
 
@@ -31,8 +29,6 @@ class OrdersController < ApplicationController
       @orderprod.destroy
       @order.destroy
       redirect_to mycart_path, notice: 'Removed successfully'
-    else
-      redirect_to orders_url, notice: 'Order didnt destroy.'
     end
   end
 
@@ -41,30 +37,5 @@ class OrdersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def order_params
-      params.fetch(:order, {}).permit(:id,:quantity)
-    end
-
-
-    #Check Quantity of Product
-    def check_quantity
-      @orderprod.each do |ordprod|
-        if ordprod.product.quantity < ordprod.quantity
-          return ordprod.product.title
-        end
-      end
-      return false
-    end
-
-    #Total Price of Order
-    def get_total(order_id)
-      @ordprod = OrderProduct.where(order_id: order_id)
-      tot_price = 0
-      @ordprod.each do |ordprod|
-        tot_price += ordprod.quantity*ordprod.product.price
-      end
     end
 end

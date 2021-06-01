@@ -20,5 +20,4 @@ class User < ApplicationRecord
     @wishlist.user_id = self.id
     @wishlist.save
   end
-
 end

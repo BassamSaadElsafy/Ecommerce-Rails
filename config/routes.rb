@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   ############################# User Routes #####################################
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin' 
-  devise_for :users #, controllers: { confirmations: 'confirmations' }
+  devise_for :users
     devise_scope :user do
       get '/users/sign_out' => 'devise/sessions#destroy'
   end
@@ -35,7 +35,6 @@ Rails.application.routes.draw do
 
   ############################# Store_Orders Routes #############################
   get 'store.orders', to: 'store_orders#index', as: 'store_orders'
-  get 'store.history', to: 'store_orders#history', as: 'store_history'
   put 'store.response/:id', to: 'store_orders#update', as: 'store_response'
   ###############################################################################
 

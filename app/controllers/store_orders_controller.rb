@@ -11,46 +11,17 @@ class StoreOrdersController < ApplicationController
 
     def update
         @order = OrderProduct.find(params[:id])
-        if @order.state == "pending" || @order.state == "confirmed"
-            if @order.order.state == "pending"
-                update_orders("confirmed")
-                redirect_to request.referrer, notice: 'confirmed'
-            end
-            if @order.order.state == "confirmed"
-                update_orders("delivered")
-                redirect_to request.referrer, notice: 'delieverd'
-            end
+        if @order.order.state == "pending"
+            update_orders("confirmed")
+            redirect_to request.referrer, notice: 'confirmed'
         end
-    end
-
-    def history
-        if !(current_user.store).nil?
-          @store_orders = OrderProduct.where(store_id: current_user.store.id)
-          @orders = @store_orders.where(state: "delivered").order(created_at: :desc)
-        else
-          redirect_to orders_path, alert: 'you do not have store!'
+        if @order.order.state == "confirmed"
+            update_orders("delivered")
+            redirect_to request.referrer, notice: 'delieverd'
         end
     end
     
     private
-
-        def store_orders_params
-            params.permit(:id, :state)
-        end
-
-        def checkorder(order_id)
-            @orders = OrderProduct.where(order_id: order_id)
-
-            @orders.each do |order|
-                if order.state == "cancelled"
-                    Order.update(state: "cancelled")
-                elsif order.state == "pending"
-                else
-                    Order.update(state: "approved")
-                end
-            end
-        end
-
         def update_orders(stat)
             @order.update(state: stat)
             @orders = OrderProduct.where(order_id: @order.order_id)
