@@ -44,13 +44,6 @@
     <div class="text-center">
       <% if can? :edit, @product %>
         <%= link_to "Edit", edit_product_path(@product.id), class: 'btn btn-primary shadow' %>
-        <%# <%= link_to "Delete", remove_product_path(@product.id), class: 'btn btn-danger shadow' %> %>
-        <%= form_with(url: product_path(@product.id), method: "delete") do |form| %>
-              <%= form.submit "Remove", :class => 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
-        <% end %>  
-     
-        
-
       <% end %>
     </div>
   </div>
